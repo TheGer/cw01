@@ -53,7 +53,6 @@
   <div class="row">
     <div class="twelve columns">
       <h2>Online Car Showroom</h2>
-      <p>this is a test</p>
       <p>This is a high fidelity prototype of the online car showroom to be developed for CW01</p>
       <hr />
     </div>
