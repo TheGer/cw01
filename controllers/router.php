@@ -1,4 +1,41 @@
 <?php
+//Automatically includes files containing classes that are called
+include_once('libraries/MyActiveRecord.0.4.php');
+
+function __autoload($className)
+{
+    //parse out filename where class should be located
+    list($suffix, $filename) = preg_split('/_/', strrev($className), 2);
+    $filename = strrev($filename);
+    $suffix = strrev($suffix);
+    
+    //select the folder where class should be located based on suffix
+    switch (strtolower($suffix))
+    {    
+        case 'model':
+        
+            $folder = '/models/';
+        
+        break;
+    
+    }
+    //compose file name
+    $file = SERVER_ROOT . $folder . strtolower($filename) . '.php';
+
+    //fetch file
+    if (file_exists($file))
+    {
+        //get file
+        include_once($file);        
+    }
+    else
+    {
+        //file does not exist!
+        die("File '$filename' containing class '$className' not found in '$folder'.");    
+    }
+}
+
+
 //fetch the passed request
 $request = $_SERVER['QUERY_STRING'];
 
@@ -9,6 +46,11 @@ $parsed = explode('&' , $request);
 
 //the page is the first element
 $page = array_shift($parsed);
+
+if ($page=="")
+{
+    $page="frontpage";
+}
 
 //the rest of the array are get statements, parse them out.
 $getVars = array();
