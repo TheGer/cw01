@@ -1,6 +1,6 @@
 <?php
-//Automatically includes files containing classes that are called
-include_once('libraries/MyActiveRecord.0.4.php');
+error_reporting(0);
+include_once('libraries/MyActiveRecord.php');
 
 function __autoload($className)
 {
@@ -39,18 +39,11 @@ function __autoload($className)
 //fetch the passed request
 $request = $_SERVER['QUERY_STRING'];
 
-
-
 //parse the page request and other GET variables
 $parsed = explode('&' , $request);
 
 //the page is the first element
 $page = array_shift($parsed);
-
-if ($page=="")
-{
-    $page="frontpage";
-}
 
 //the rest of the array are get statements, parse them out.
 $getVars = array();
@@ -92,16 +85,4 @@ else
 $controller->main($getVars);
 
 
-
-/*
-//this is a test , and we will be removing it later
-print "The page your requested is '$page'";
-print '<br/>';
-$vars = print_r($getVars, TRUE);
-print "The following GET vars were passed to the page:<pre>".$vars."</pre>";
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 ?>
