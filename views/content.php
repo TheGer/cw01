@@ -50,7 +50,7 @@
       <div id="featured">
         <img src="code_images/slide1.jpg" alt="slide image">
         <img src="code_images/slide2.jpg" alt="slide image">
-        <img src=".code_images/slide3.jpg" alt="slide image">
+        <img src="code_images/slide3.jpg" alt="slide image">
       </div>
     </div>
   </div>

@@ -69,7 +69,7 @@ class Content_Model extends MyActiveRecord
     public function get_articles()
     {
         
-        return $this->FindBySql($this,"select * from content_model");
+        return $this->FindBySql($this,"select * from content_model order by date");
       //  return $this->articles;
     }
 }
