@@ -50,13 +50,15 @@ class Content_Model extends MyActiveRecord
         //db calls go here.  So for instance get list of articles etc...
     }
     
-     public function get_article($articleName)
+     public function get_article($id)
     {
         //fetch article from array
-     //   $article = $this->articles[$articleName];
-    $article = "";
-        return $article;
+     
+         return $this->FindBySql($this,"select * from content_model where id=$id");
+        
     }
+    
+    
     
     public function get_article_count()
     {
