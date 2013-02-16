@@ -59,12 +59,19 @@
       <?=$data['articlecount']; ?>   
         <br/>
         
+        <?=$data['editform'];?>
           <?php
+          
                 foreach($data['articleslist'] as $article)
                 {
                     echo $article->content;
+                    echo "<br/>";
+                ?>
+                <a href="<?=SITE_ROOT?>/index.php?page=content&action=showedit&id=<?=$article->id?>">Edit</a>
+        <?php
                 }
 
+                echo $data['addform'];
 
 // print_r($data['articleslist']); ?>
       

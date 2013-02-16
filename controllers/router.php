@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+//error_reporting(0);
 include_once('libraries/MyActiveRecord.php');
 
 function __autoload($className)
@@ -43,18 +43,21 @@ $request = $_SERVER['QUERY_STRING'];
 $parsed = explode('&' , $request);
 
 //the page is the first element
-$page = array_shift($parsed);
-
 //the rest of the array are get statements, parse them out.
 $getVars = array();
 foreach ($parsed as $argument)
 {
     //split GET vars along '=' symbol to separate variable, values
+    
     list($variable , $value) = preg_split('[=]' , $argument);
-    $getVars[$variable] = $value;
-    $target = SERVER_ROOT . '/controllers/'.$page.'.php';
+    
+    $getVars[$variable] = urldecode($value);
+    
     
 }
+$target = SERVER_ROOT . '/controllers/'.$getVars['page'].'.php';
+
+$page = $getVars['page'];
 //get target
 if (file_exists($target))
 {
@@ -63,6 +66,7 @@ if (file_exists($target))
     //modify page to fit naming convention
     $class = ucfirst($page) . '_Controller';
 
+    
     //instantiate the appropriate class
     if (class_exists($class))
     {
@@ -82,6 +86,7 @@ else
 
 //once we have the controller instantiated, execute the default function
 //pass any GET varaibles to the main method
+
 $controller->main($getVars);
 
 
