@@ -8,7 +8,7 @@
 class Content_Controller
 {
     //template
-    public $template='content';
+    public $template='displaycontent';
     
     
     

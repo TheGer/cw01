@@ -7,7 +7,7 @@
 define('SERVER_ROOT' , 'c:\xampp\htdocs\cw01');
 
 //yoursite.com is your webserver
-define('SITE_ROOT' , 'http://localhost/cw01');
+define('SITE_ROOT' , 'http://localhost:8080/cw01');
 
 define('MYACTIVERECORD_CONNECTION_STR', 'mysql://root@localhost/coursework');
 
