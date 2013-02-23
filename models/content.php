@@ -10,33 +10,13 @@ class Content_Model extends MyActiveRecord
     
     
     public $id;
+    public $name;
+    public $title;
     public $content;
     public $date;
     public $authorid;
     
-    /*private $articles = array
-    (
-        //article 1
-        'new' => array
-        (
-            'title' => 'New Website' ,
-            'content' => 'Welcome to the site! We are glad to have you here.'
-        )
-        ,
-        //2
-        'mvc' => array
-        (
-            'title' => 'PHP MVC Frameworks are Awesome!' ,
-            'content' => 'It really is very easy. Take it from us!'
-        )
-        ,
-        //3
-        'test' => array
-        (
-            'title' => 'Testing' ,
-            'content' => 'This is just a measly test article.'
-        )
-    );*/
+
     
     public function get_date()
     {
@@ -56,6 +36,13 @@ class Content_Model extends MyActiveRecord
      
          return $this->FindBySql($this,"select * from content_model where id=$id");
         
+    }
+    
+    
+    public function get_article_by_name($name)
+    {
+        $sql = $this->Prepare("select * from content_model where name = $name");
+        return $this->FindBySql($sql);
     }
     
     

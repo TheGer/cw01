@@ -1,10 +1,3 @@
-<?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-?>
 <!DOCTYPE html>
 
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
@@ -14,15 +7,10 @@
   <meta charset="utf-8" />
 
   <!-- Set the viewport width to device width for mobile -->
-  <meta name="viewport" content="width=device-width" />
+  <meta name="viewport" content="width=1000" />
 
-  <title>Welcome to Foundation</title>
-  
-  <!-- Included CSS Files (Uncompressed) -->
-  <!--
-  <link rel="stylesheet" href="stylesheets/foundation.css">
-  -->
-  
+  <title>Car Dealership</title>
+ 
   <!-- Included CSS Files (Compressed) -->
   <link rel="stylesheet" href="stylesheets/foundation.min.css">
   <link rel="stylesheet" href="stylesheets/app.css">
@@ -56,50 +44,19 @@
   </div>
  <div class="row">
         <div class="twelve columns">
-      <?=$data['articlecount']; ?>   
-        <br/>
-        
-        <?=$data['editform'];?>
           <?php
-          
-                foreach($data['articleslist'] as $article)
-                {
-                    echo $article->content;
-                    echo "<br/>";
-                ?>
-        <?php
-                }
-
-               
-
-// print_r($data['articleslist']); ?>
+              $article = $data["article"];
+          ?>
+            <div class="four columns"> 
+                <h2><?=$article->title?></h2>
+                    <?=$article->content?>
+                    
+            </div>
       
-
-     
-            
-            <!--content area -->     
-       <!--  <dl class="tabs contained">
-            <dd class="active"><a href="#simple1">Latest cars</a></dd>
-            <dd><a href="#simple2">Upcoming deliveries</a></dd>
-            <dd><a href="#simple3">Special Offers</a></dd>
-         </dl>
-        <ul class="tabs-content contained">
-            <li class="active" id="simple1Tab">
-                 
-          
-            </li>
-            <li id="simple2Tab">Upcoming cars will be listed here</li>
-            <li id="simple3Tab">Special offers to be listed here.</li>
-        </ul> -->
+      
         </div>
     </div>
       
-  
-  <!-- Included JS Files (Uncompressed) -->
-  <!--
-  <script src="javascripts/jquery.js"></script><script src="javascripts/jquery.foundation.mediaQueryToggle.js"></script><script src="javascripts/jquery.foundation.forms.js"></script><script src="javascripts/jquery.foundation.reveal.js"></script><script src="javascripts/jquery.foundation.orbit.js"></script><script src="javascripts/jquery.foundation.navigation.js"></script><script src="javascripts/jquery.foundation.buttons.js"></script><script src="javascripts/jquery.foundation.tabs.js"></script><script src="javascripts/jquery.foundation.tooltips.js"></script><script src="javascripts/jquery.foundation.accordion.js"></script><script src="javascripts/jquery.placeholder.js"></script><script src="javascripts/jquery.foundation.alerts.js"></script><script src="javascripts/jquery.foundation.topbar.js"></script><script src="javascripts/jquery.foundation.joyride.js"></script><script src="javascripts/jquery.foundation.clearing.js"></script><script src="javascripts/jquery.foundation.magellan.js"></script>
-  -->
-  
   <!-- Included JS Files (Compressed) -->
   <script src="javascripts/jquery.js"></script>
   <script src="javascripts/jquery-ui.js"></script>

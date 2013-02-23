@@ -63,13 +63,16 @@ class Content_Controller
         
         
         $navigation = new View_Model('navigation');
+        
+        $navigation->assign('articleslist',$contentModel->get_articles());
+        
         $addform = new View_Model('addcontent');
         
         
         $master = new View_Model($this->template);
           //assign article data to view
         $master->assign('navigation',$navigation->render(FALSE));
-        $master->assign('articlecount',$contentModel->get_article_count());
+    
         
         if ($getVars['action']=='showedit')
         {
@@ -81,13 +84,25 @@ class Content_Controller
             $editform->assign('texttoedit',$contentModel->content);
             $master->assign('editform',$editform->render(FALSE));
         }
+        
+        if ($getVars['action']=='showadd')
+        {
+            $master->assign('addform',$addform->render(FALSE));
+            
+        }
+        
+        
+        
+        if ($getVars['article']!= "")   
+        { 
+          $master->assign('article',$contentModel->get_article_by_name($getVars['article']));
+        }
         else
         {
-        $master->assign('articleslist',$contentModel->get_articles());
-        
-        //if the user can add
-        $master->assign('addform',$addform->render(FALSE));
+            $master->assign('article',$contentModel->get_article_by_name("home"));
         }
+        
+        
         //if the edit link was pressed
         
         
