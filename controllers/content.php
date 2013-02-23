@@ -66,13 +66,12 @@ class Content_Controller
         
         $navigation->assign('articleslist',$contentModel->get_articles());
         
+        
         $addform = new View_Model('addcontent');
         
         
         $master = new View_Model($this->template);
           //assign article data to view
-        $master->assign('navigation',$navigation->render(FALSE));
-    
         
         if ($getVars['action']=='showedit')
         {
@@ -91,17 +90,16 @@ class Content_Controller
             
         }
         
-        
-        
         if ($getVars['article']!= "")   
         { 
+            
           $master->assign('article',$contentModel->get_article_by_name($getVars['article']));
         }
         else
         {
             $master->assign('article',$contentModel->get_article_by_name("home"));
         }
-        
+        $master->assign('navigation',$navigation->render(FALSE));
         
         //if the edit link was pressed
         

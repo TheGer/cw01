@@ -45,14 +45,20 @@
  <div class="row">
         <div class="twelve columns">
           <?php
-              $article = $data["article"];
+          
+              
+              
+              foreach ($data['article'] as $article)
+              {
           ?>
             <div class="four columns"> 
                 <h2><?=$article->title?></h2>
                     <?=$article->content?>
                     
             </div>
-      
+      <?php
+              }
+              ?>
       
         </div>
     </div>

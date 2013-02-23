@@ -9,14 +9,14 @@
                     if ($article->name == $currentarticle->name)
                     {
                  ?>
-                  <li class="active"><a href="index.php?page=content&article=<?=$article->name?>">Home</a></li>  
+                  <li class="active"><a href="index.php?page=content&article=<?=$article->name?>"><?=$article->name?></a></li>  
        
             <?php
                     }
                     else
                     {
               ?>
-                 <li><a href="index.php?page=content&article=<?=$article->name?>">Home</a></li>  
+                 <li><a href="index.php?page=content&article=<?=$article->name?>"><?=$article->name?></a></li>  
                <?php
                     }
                 }

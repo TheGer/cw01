@@ -40,6 +40,11 @@ function __autoload($className)
 //fetch the passed request
 $request = $_SERVER['QUERY_STRING'];
 
+if ($request=="")
+{
+$request = "page=content&article=home";
+}
+
 //parse the page request and other GET variables
 $parsed = explode('&' , $request);
 

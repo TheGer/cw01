@@ -41,8 +41,9 @@ class Content_Model extends MyActiveRecord
     
     public function get_article_by_name($name)
     {
-        $sql = $this->Prepare("select * from content_model where name = $name");
-        return $this->FindBySql($sql);
+        $name = mysql_real_escape_string($name);
+        $sql = "select * from content_model where name = '$name'";
+        return $this->FindBySql($this,$sql);
     }
     
     
