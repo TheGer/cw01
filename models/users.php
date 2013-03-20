@@ -34,6 +34,13 @@ class Users_Model extends MyActiveRecord
         return $this->FindBySql($this,$sql); 
     }
     
+         public function get_user_by_id($id)
+    {
+        //fetch article from array
+     
+         return $this->FindBySql($this,"select * from users_model where id=$id");
+        
+    }
     
     
     
