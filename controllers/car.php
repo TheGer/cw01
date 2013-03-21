@@ -97,17 +97,9 @@ class Car_Controller
             
         }
         
-        if ($getVars['article']!= "")   
-        { 
-            
-          $master->assign('article',$carModel->get_article_by_name($getVars['article']));
-        }
-        else
-        {
-            $master->assign('article',$carModel->get_article_by_name("home"));
-        }
-        $master->assign('navigation',$navigation->render(FALSE));
-        
+        //to do here: show featured cars because this is what the default for the cars will be
+        //
+        //
         //if the edit link was pressed
         
         

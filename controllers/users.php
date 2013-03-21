@@ -49,16 +49,11 @@ class Users_Controller
     
     public function main(array $getVars)
     {
-      /*  $vars = print_r($getVars,TRUE);
-        print "welcome to the frontpage controller";
-        print $vars;*/
+      
         
         $contentModel = new Content_Model;
         $userModel = new User_Model;
-     //   print_r($frontpageModel->print_articles());
-        
-       // $article = $contentModel->get_article($getVars['article']);
-        
+     
         if ($getVars['action']=='add')
         {
        //     echo 'add';
@@ -89,7 +84,12 @@ class Users_Controller
             $userModel = array_shift($userModel->get_user_by_id($id));
             $editform = new View_Model('edituser');
             $editform->assign('idtoedit',$userModel->id);
-            //stopping here...
+            $editform->assign('passwordtoedit',$userModel->password);
+            $editform->assign('firstnametoedit',$userModel->firstname);
+            $editform->assign('secondnametoedit',$userModel->secondname);
+            $editform->assign('addresstoedit',$userModel->address);
+            $editform->assign('typetoedit',$userModel->type);
+            
             $master->assign('editform',$editform->render(FALSE));
         }
         
@@ -98,16 +98,10 @@ class Users_Controller
             $master->assign('addform',$addform->render(FALSE));
             
         }
+       
         
-        if ($getVars['article']!= "")   
-        { 
-            
-          $master->assign('article',$contentModel->get_article_by_name($getVars['article']));
-        }
-        else
-        {
-            $master->assign('article',$contentModel->get_article_by_name("home"));
-        }
+        //to do here: show list of users because this is the default page for the users
+       
         $master->assign('navigation',$navigation->render(FALSE));
         
         //if the edit link was pressed
