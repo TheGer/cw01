@@ -87,7 +87,15 @@ class Car_Controller
             $carModel = array_shift($carModel->get_article($id));
             $editform = new View_Model('editcar');
             $editform->assign('idtoedit',$carModel->id);
-            $editform->assign('texttoedit',$carModel->car);
+            $editform->assign('nametoedit',$carModel->name);
+            $editform->assign('modeltoedit',$carModel->model);
+            $editform->assign('enginesizetoedit',$carModel->enginesize);
+            $editform->assign('mileagetoedit',$carModel->mileage);
+            $editform->assign('notestoedit',$carModel->notes);
+            $editform->assign('dateaddedtoedit',$carModel->dateadded);
+            $editform->assign('featuredtoedit',$carModel->featured);
+            
+     
             $master->assign('editform',$editform->render(FALSE));
         }
         
