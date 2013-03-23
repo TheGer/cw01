@@ -44,40 +44,12 @@
   </div>
  <div class="row">
         <div class="twelve columns">
-            
-            <!-- table with all the cars as well as a link to the details page --> 
-            <table class="twelve">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Model</th>
-                        <th>Mileage</th>
-                        <th>Engine Size</th>
-                        <th>Date Added</th>
-                        <th>View Details</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-            <?php
-
-              foreach ($data['carslist'] as $car)
-              {
-          ?>
-                <td><?=$car->id?></td>
-                <td><?=$car->name?></td>
-                <td><?=$car->model?></td>
-                <td><?=$car->mileage?></td>
-                <td><?=$car->enginesize?></td>
-                <td><?=$car->dateadded?></td>
-                <td><a href="<?=SITE_ROOT?>/index.php?page=car&action=showdetails&id=<?=$car->id?>">View details</a></td>
-      <?php
-              }
-              ?>
-                </tbody>
-            </table>
-      
+           <p>Name: <?=$data['carname']; ?></p>
+           <p>Model: <?=$data['carmodel']; ?></p>
+           <p>Engine Size: <?=$data['carenginesize']; ?></p>
+           <p>Mileage: <?=$data['carmileage']; ?></p>
+           <p>Notes: <?=$data['carnotes']; ?></p>
+           <p>Date Added: <?=$data['cardateadded']; ?></p>
         </div>
     </div>
       

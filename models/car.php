@@ -36,6 +36,11 @@ class Cart_Model extends MyActiveRecord
     {
          return $this->FindBySql($this,"select * from cars_model order by $orderby desc");
     }
+    
+    public function get_cars_default()
+    {
+        return $this->FindBySql($this,"select * from cars_model order by $orderby desc");
+    }
   
     public function get_featured_cars()
     {

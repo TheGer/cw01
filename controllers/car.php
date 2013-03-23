@@ -58,7 +58,6 @@ class Car_Controller
         
         if ($getVars['action']=='add')
         {
-       //     echo 'add';
             $this->add($getVars);
         }
         
@@ -73,17 +72,34 @@ class Car_Controller
         //get the list of articles for the top menu bar
         $navigation->assign('articleslist',$contentModel->get_articles());
         
-        //create the form to add a car
-        $addform = new View_Model('addcar');
-        
+      
         
         $master = new View_Model($this->template);
-          //assign article data to view
+        $master->assign('carslist',$carModel->get_cars_default()); 
+        
+         if ($getVars['action']=='showdetails')
+         {
+             $id = $getVars['id'];
+             $detailsview = new View_Model('cardetails');
+             $thiscar = array_shift($carModel->get_car($id));
+             $detailsview->assign('carname',$thiscar->name);
+             $detailsview->assign('carmodel',$thiscar->model);
+             $detailsview->assign('carenginesize',$thiscar->enginesize);
+             $detailsview->assign('carmileage',$thiscar->mileage);
+             $detailsview->assign('carnotes',$thiscar->notes);
+             $detailsview->assign('cardateadded',$thiscar->dateadded);
+           
+             
+             $master->assign('detailsview',$detailsview->render(FALSE));
+         }
+
+        
+        
         
         if ($getVars['action']=='showedit')
         {
             $id = $getVars['id'];
-            echo $id;
+           // echo $id;
             $carModel = array_shift($carModel->get_article($id));
             $editform = new View_Model('editcar');
             $editform->assign('idtoedit',$carModel->id);
@@ -99,16 +115,16 @@ class Car_Controller
             $master->assign('editform',$editform->render(FALSE));
         }
         
+          //create the form to add a car
+        $addform = new View_Model('addcar');
+        
+        
+        
         if ($getVars['action']=='showadd')
         {
             $master->assign('addform',$addform->render(FALSE));
             
         }
-        
-        //to do here: show featured cars because this is what the default for the cars will be
-        //
-        //
-        //if the edit link was pressed
         
         
         //show the page
