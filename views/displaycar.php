@@ -49,6 +49,8 @@
             {
             echo $data['detailsview'];
             }
+            else 
+            {
             ?>
             <!-- table with all the cars as well as a link to the details page --> 
             <table class="twelve">
@@ -84,7 +86,9 @@
               ?>
                 </tbody>
             </table>
-      
+      <?php
+            }
+      ?>
         </div>
     </div>
       

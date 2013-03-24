@@ -45,7 +45,10 @@
  <div class="row">
         <div class="twelve columns">
           <?php
-            
+            //if logged in, display the editor window like so:
+           //echo $data['addform']; 
+          
+          
               foreach ($data['article'] as $article)
               {
           ?>

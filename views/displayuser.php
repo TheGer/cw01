@@ -48,12 +48,12 @@
           
               
               
-              foreach ($data['article'] as $article)
+              foreach ($data['users'] as $user)
               {
           ?>
             <div class="four columns"> 
-                <h2><?=$article->title?></h2>
-                    <?=$article->content?>
+                <h2><?=$user->id?></h2>
+                    <?=$user->username?>
                     
             </div>
       <?php

@@ -5,4 +5,14 @@
            <p>Mileage: <?=$data['carmileage']; ?></p>
            <p>Notes: <?=$data['carnotes']; ?></p>
            <p>Date Added: <?=$data['cardateadded']; ?></p>
-  
+           <fieldset>Images:
+           <p>
+           <?php foreach ($data['carimages'] as $image)
+           {
+           ?>
+               <img src="<?=$image?>"/>
+           <?php
+           }
+           ?>
+           </p>
+           </fieldset>
