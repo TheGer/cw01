@@ -4,7 +4,7 @@
  * WEB_ROOT_FOLDER is the name of the parent folder you created these 
  * documents in.
  */
-error_reporting(E_ERROR);
+error_reporting(E_ALL);
 
 define('SERVER_ROOT' , 'c:\xampp\htdocs\cw01');
 

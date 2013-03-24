@@ -65,6 +65,7 @@
               foreach ($data['carslist'] as $car)
               {
           ?>
+               <tr>     
                 <td><?=$car->id?></td>
                 <td><?=$car->name?></td>
                 <td><?=$car->model?></td>
@@ -72,6 +73,7 @@
                 <td><?=$car->enginesize?></td>
                 <td><?=$car->dateadded?></td>
                 <td><a href="<?=SITE_ROOT?>/index.php?page=car&action=showdetails&id=<?=$car->id?>">View details</a></td>
+               </tr>
       <?php
               }
               ?>

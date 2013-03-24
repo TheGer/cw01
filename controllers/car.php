@@ -75,11 +75,16 @@ class Car_Controller
       
         
         $master = new View_Model($this->template);
+       
         $master->assign('carslist',$carModel->get_cars_default()); 
+       
+        $master->assign('navigation',$navigation->render(FALSE));
         
-         if ($getVars['action']=='showdetails')
+        
+        if ($getVars['action']=='showdetails')
          {
              $id = $getVars['id'];
+             
              $detailsview = new View_Model('cardetails');
              $thiscar = array_shift($carModel->get_car($id));
              $detailsview->assign('carname',$thiscar->name);

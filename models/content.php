@@ -20,7 +20,7 @@ class Content_Model extends MyActiveRecord
     
     public function get_date()
     {
-        return $date;
+        return $this->date;
     }
     
     

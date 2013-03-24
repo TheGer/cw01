@@ -5,7 +5,7 @@
  * and open the template in the editor.
  * 
  */
-class Cart_Model extends MyActiveRecord
+class Car_Model extends MyActiveRecord
 {
     
     
@@ -28,23 +28,24 @@ class Cart_Model extends MyActiveRecord
      public function get_car($id)
     {
         //fetch article from array
-     return $this->FindBySql($this,"select * from cars_model where id=$id");
+     return $this->FindBySql($this,"select * from car_model where id=$id");
         
     }
     
     public function get_cars($orderby)
     {
-         return $this->FindBySql($this,"select * from cars_model order by $orderby desc");
+         return $this->FindBySql($this,"select * from car_model order by $orderby desc");
     }
     
     public function get_cars_default()
     {
-        return $this->FindBySql($this,"select * from cars_model order by $orderby desc");
+       $sql = "select * from car_model";
+        return $this->FindBySql($this,$sql);
     }
   
     public function get_featured_cars()
     {
-         return $this->FindBySql($this,"select * from cars_model where featured = true");
+         return $this->FindBySql($this,"select * from car_model where featured = true");
     }
     
     public function get_car_count()
