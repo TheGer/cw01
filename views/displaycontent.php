@@ -45,13 +45,11 @@
  <div class="row">
         <div class="twelve columns">
           <?php
-          
-              
-              
+            
               foreach ($data['article'] as $article)
               {
           ?>
-            <div class="four columns"> 
+            
                 <h2><?=$article->title?></h2>
                     <?=$article->content?>
                     
@@ -60,8 +58,8 @@
               }
               ?>
       
-        </div>
-    </div>
+       </div>
+    
       
   <!-- Included JS Files (Compressed) -->
   <script src="javascripts/jquery.js"></script>

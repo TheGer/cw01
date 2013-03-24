@@ -28,6 +28,7 @@ class Car_Model extends MyActiveRecord
      public function get_car($id)
     {
         //fetch article from array
+         
      return $this->FindBySql($this,"select * from car_model where id=$id");
         
     }

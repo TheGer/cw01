@@ -76,7 +76,7 @@ class Content_Controller
         if ($getVars['action']=='showedit')
         {
             $id = $getVars['id'];
-            echo $id;
+       //     echo $id;
             $contentModel = array_shift($contentModel->get_article($id));
             $editform = new View_Model('editcontent');
             $editform->assign('idtoedit',$contentModel->id);

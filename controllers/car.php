@@ -86,13 +86,15 @@ class Car_Controller
              $id = $getVars['id'];
              
              $detailsview = new View_Model('cardetails');
-             $thiscar = array_shift($carModel->get_car($id));
-             $detailsview->assign('carname',$thiscar->name);
-             $detailsview->assign('carmodel',$thiscar->model);
-             $detailsview->assign('carenginesize',$thiscar->enginesize);
-             $detailsview->assign('carmileage',$thiscar->mileage);
-             $detailsview->assign('carnotes',$thiscar->notes);
-             $detailsview->assign('cardateadded',$thiscar->dateadded);
+             
+             
+             $carmodel = array_shift($carModel->get_car($id));
+             $detailsview->assign('carname',$carmodel->name);
+             $detailsview->assign('carmodel',$carmodel->model);
+             $detailsview->assign('carenginesize',$carmodel->enginesize);
+             $detailsview->assign('carmileage',$carmodel->mileage);
+             $detailsview->assign('carnotes',$carmodel->notes);
+             $detailsview->assign('cardateadded',$carmodel->dateadded);
            
              
              $master->assign('detailsview',$detailsview->render(FALSE));

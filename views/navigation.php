@@ -2,25 +2,20 @@
        <section> 
         <ul class="left">
               <?php
-              $currentarticle = $data['article'];
+             // $currentarticle = $data['article'];
               
                 foreach($data['articleslist'] as $article)
                 {
-                    if ($article->name == $currentarticle->name)
-                    {
-                 ?>
-                  <li class="active"><a href="index.php?page=content&article=<?=$article->name?>"><?=$article->name?></a></li>  
-       
-            <?php
-                    }
-                    else
-                    {
+                
               ?>
                  <li><a href="index.php?page=content&article=<?=$article->name?>"><?=$article->name?></a></li>  
                <?php
-                    }
+                    
                 }
              ?>
+                 <li><a href="index.php?page=car">cars</a></li>
+                 <li><a href="index.php?page=login">login</a></li>
+                 
         </ul>
        </section>
 </nav>

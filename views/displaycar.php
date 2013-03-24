@@ -44,7 +44,9 @@
   </div>
  <div class="row">
         <div class="twelve columns">
-            
+            <?php
+            echo $data['detailsview'];
+            ?>
             <!-- table with all the cars as well as a link to the details page --> 
             <table class="twelve">
                 <thead>
