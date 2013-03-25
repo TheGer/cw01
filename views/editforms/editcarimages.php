@@ -1,4 +1,5 @@
 <?php
+//implement add/delete functionality for images
 //list car images with a delete option
 if ($handle = opendir(SERVER_ROOT . '/uploads/'.$data['idtoedit'].'/')){
     while (false !== ($entry = readdir($handle))) {
