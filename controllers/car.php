@@ -68,19 +68,12 @@ class Car_Controller
         
         
         $navigation = new View_Model('navigation');
-        
         //get the list of articles for the top menu bar
         $navigation->assign('articleslist',$contentModel->get_articles());
-        
-      
-        
-        $master = new View_Model($this->template);
-       
+        $master = new View_Model($this->template);  
         $master->assign('carslist',$carModel->get_cars_default()); 
        
         $master->assign('navigation',$navigation->render(FALSE));
-        
-        
         if ($getVars['action']=='showdetails')
          {
              $id = $getVars['id'];
@@ -99,16 +92,13 @@ class Car_Controller
              
              $master->assign('detailsview',$detailsview->render(FALSE));
          }
-
-        
-        
-        
+    
         if ($getVars['action']=='showedit')
         {
             $id = $getVars['id'];
            // echo $id;
             $carModel = array_shift($carModel->get_article($id));
-            $editform = new View_Model('editcar');
+            $editform = new View_Model('/editforms/editcar');
             $editform->assign('idtoedit',$carModel->id);
             $editform->assign('nametoedit',$carModel->name);
             $editform->assign('modeltoedit',$carModel->model);
@@ -121,14 +111,10 @@ class Car_Controller
      
             $master->assign('editform',$editform->render(FALSE));
         }
-        
-          //create the form to add a car
-        $addform = new View_Model('addcar');
-        
-        
-        
+         
         if ($getVars['action']=='showadd')
         {
+              $addform = new View_Model('/addforms/addcar');
             $master->assign('addform',$addform->render(FALSE));
             
         }

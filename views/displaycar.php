@@ -45,6 +45,11 @@
  <div class="row">
         <div class="twelve columns">
             <?php
+            if (isset($data['addform']))
+            {
+                echo $data['addform'];
+                
+            }
             if (isset($data['detailsview']))
             {
             echo $data['detailsview'];
