@@ -50,6 +50,17 @@
                 echo $data['addform'];
                 
             }
+            
+            
+            if(isset($data['editform']))
+            {
+                echo $data['editform'];
+                echo "<br/>";
+                echo $data['editimagesform'];
+                
+            }
+            
+            
             if (isset($data['detailsview']))
             {
             echo $data['detailsview'];

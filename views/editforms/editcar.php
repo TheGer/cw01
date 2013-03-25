@@ -36,5 +36,5 @@
             <span class="custom checkbox"></span> Featured car?
         <?php } ?>    
     </label>  
-    <input type="submit" class="success button" value="Add new car"> 
+    <input type="submit" class="success button" value="Update car values"> 
 </form>

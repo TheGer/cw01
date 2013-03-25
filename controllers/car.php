@@ -28,9 +28,17 @@ class Car_Controller
         
     }
     
-    public function uploadimage()
-    {
-        //to do implement upload image
+    public function uploadimage(int $id)
+    {       //to do implement upload image
+        if (file_exists(SERVER_ROOT . '/uploads/'.$id.'/'))
+        {
+            echo $_FILES["file"].["name"]." already exists";
+        }
+        else 
+        {
+            move_uploaded_file($FILES["file"]["tmp_name"], SERVER_ROOT . '/uploads/'.$id.'/'.$FILES["file"]["name"]);
+            
+        }     
     }
     
     
@@ -114,9 +122,12 @@ class Car_Controller
             $editform->assign('notestoedit',$carModel->notes);
             $editform->assign('dateaddedtoedit',$carModel->dateadded);
             $editform->assign('featuredtoedit',$carModel->featured);
-            
+            $editimagesform = new View_Model('/editforms/editcarimages');
+            $editimagesform->assign('idtoedit',$carmodel->id);
      
             $master->assign('editform',$editform->render(FALSE));
+            $master->assign('editimagesform',$editimagesform->render(FALSE));
+            
         }
          
         if ($getVars['action']=='showadd')
