@@ -28,6 +28,11 @@ class Car_Controller
         
     }
     
+    public function uploadimage()
+    {
+        //to do implement upload image
+    }
+    
     
     
     public function edit(array $getVars)
@@ -70,16 +75,18 @@ class Car_Controller
         $navigation = new View_Model('navigation');
         //get the list of articles for the top menu bar
         $navigation->assign('articleslist',$contentModel->get_articles());
+        
         $master = new View_Model($this->template);  
         $master->assign('carslist',$carModel->get_cars_default()); 
-       
+
         $master->assign('navigation',$navigation->render(FALSE));
+        
+        
         if ($getVars['action']=='showdetails')
          {
              $id = $getVars['id'];
              
              $detailsview = new View_Model('cardetails');
-             
              
              $carmodel = array_shift($carModel->get_car($id));
              $detailsview->assign('carname',$carmodel->name);
