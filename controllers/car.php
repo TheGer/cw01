@@ -23,8 +23,8 @@ class Car_Controller
         $carModel->notes = $getVars['notes'];
         $carModel->dateadded = $getVars['dateadded'];
         $carModel->featured = $getVars['featured'];
-        
-        return $carModel->save();
+        $carModel->save();
+        return $carModel->id;
         
     }
     
@@ -71,7 +71,12 @@ class Car_Controller
         
         if ($getVars['action']=='add')
         {
-            $this->add($getVars);
+            
+            //create folder for images
+            
+            $path = SERVER_ROOT . "/uploads/".$this->add($getVars)."/";
+           // echo $path;
+            mkdir(SERVER_ROOT . "/uploads/".$this->add($getVars)."/");
         }
         
         if ($getVars['action']=='edit')

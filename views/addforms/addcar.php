@@ -6,7 +6,7 @@
  */
 ?>
 <form method="get" action="<?=SITE_ROOT?>">
-    <input type="hidden" name="page" value="content"/>
+    <input type="hidden" name="page" value="car"/>
     <input type="hidden" name="action" value="add"/>
   
    <label class="left inline">Name:</label> 
