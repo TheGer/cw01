@@ -7,11 +7,15 @@
            <p>Date Added: <?=$data['cardateadded']; ?></p>
            <fieldset>Images:
            <p>
-           <?php foreach ($data['carimages'] as $image)
+           <?php 
+           if(isset($data['carimages']))
            {
+            foreach ($data['carimages'] as $image)
+            {
            ?>
-               <img src="<?=$image?>"/>
+                <img src="<?=$image?>"/>
            <?php
+            }
            }
            ?>
            </p>
