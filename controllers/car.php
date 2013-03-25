@@ -104,6 +104,18 @@ class Car_Controller
              $detailsview->assign('carnotes',$carmodel->notes);
              $detailsview->assign('cardateadded',$carmodel->dateadded);
            
+             $carimages = Array();
+             
+             if ($handle = opendir(SERVER_ROOT . '/uploads/'.$id.'/')){
+                while (false !== ($entry = readdir($handle))) {
+                 if ($entry !="." && $entry != "..")
+                    {
+                        array_push($carimages,$entry);
+                    }
+                }
+             }
+             $detailsview->assign('carimages',$carimages);
+             
              
              $master->assign('detailsview',$detailsview->render(FALSE));
          }
@@ -138,11 +150,9 @@ class Car_Controller
         }
         
         
-        //show the page
-        $master->render();
-        //$view->assign('title' , $article['title']);
-        //$view->assign('car' , $article['car']);
         
+        $master->render();
+       
     }
 }
 
