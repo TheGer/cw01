@@ -74,8 +74,8 @@
                                 <td><?= $user->firstname ?></td>
                                 <td><?= $user->secondname ?></td>
                                 <td><?= $user->type ?></td>
-                                <td><a href="<?= SITE_ROOT ?>/index.php?page=users&action=showedit&id=<?= $car->id ?>">Edit user</a></td>
-                                <td><a href="<?= SITE_ROOT ?>/index.php?page=users&action=delete&id=<?= $car->id ?>" onclick="return confirm('Are you sure?')">Delete user</a></td>
+                                <td><a href="<?= SITE_ROOT ?>/index.php?page=users&action=showedit&id=<?=$user->id ?>">Edit user</a></td>
+                                <td><a href="<?= SITE_ROOT ?>/index.php?page=users&action=delete&id=<?=$user->id ?>" onclick="return confirm('Are you sure?')">Delete user</a></td>
                             </tr>                               
                             <?php
                         }
