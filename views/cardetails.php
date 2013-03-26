@@ -11,7 +11,7 @@
         if (isset($data['carimages'])) {
             foreach ($data['carimages'] as $image) {
                 ?>
-                <li><a href="<?= $image ?>"><img src="<?= $image ?>"/></a></li>
+                <li><a href="<?=SITE_ROOT . '/uploads/' . $data['id']. '/' . $image ?>"><img src="<?=SITE_ROOT . '/uploads/' . $data['id']. '/' . $image ?>"/></a></li>
                 <?php
             }
         }

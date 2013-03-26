@@ -57,6 +57,12 @@ $carModel->color = $getVars['color'];
         
     }
     
+    public function carcount()
+    {
+        $carModel=new Car_Model();
+        return $carModel->get_car_count();
+    }
+    
     public function main(array $getVars) {
 
         $loggedin = false;
@@ -109,6 +115,7 @@ $carModel->color = $getVars['color'];
             $detailsview = new View_Model('cardetails');
 
             $carmodel = array_shift($carModel->get_car($id));
+            $detailsview->assign('id', $carmodel->id);
             $detailsview->assign('carname', $carmodel->name);
             $detailsview->assign('carmodel', $carmodel->model);
             $detailsview->assign('carenginesize', $carmodel->enginesize);
