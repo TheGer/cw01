@@ -52,7 +52,7 @@ class Users_Controller
       
         
         $contentModel = new Content_Model;
-        $userModel = new User_Model;
+        $userModel = new Users_Model;
      
         if ($getVars['action']=='add')
         {
@@ -104,7 +104,20 @@ class Users_Controller
         //to do here: show list of users because this is the default page for the users
        
         $loginform = new View_Model('login');
+        
+        
+       
+        
+        
+        if (!isset($_SESSION['username']))
+        {
         $master->assign('loginform',$loginform->render(FALSE));
+        }
+        else 
+        {
+        $master->assign('users',$userModel->get_users());    
+        }
+        
         
         $master->assign('navigation',$navigation->render(FALSE));
         

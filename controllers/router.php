@@ -38,9 +38,9 @@ function __autoload($className)
 
 function login($username,$password)
 {
-    $result = MyActiveRecord::Query("select * from users_model where username = $username and password = MD5('$password')");
+    $result = MyActiveRecord::Query("select * from users_model where username = '$username' and password = MD5('$password')");
     
-    if ($result.next())
+    if (mysql_fetch_array($result))
     {
         //returns true if the query is found
         return true;
@@ -50,25 +50,35 @@ function login($username,$password)
         return false;
     }
 }
-$loggedin=FALSE;
+
 //post variables for login
-if ($_POST)
+//print_r($_SERVER);
+if (isset($_GET["username"]))
 {
-    $uname = $_POST['username'];
-    $pword = $_POST['pword'];
+    
+    
+    $uname = $_GET["username"];
+    $pword = $_GET["password"];
+    
+    
     if (!login($uname,$pword))
     {
+        echo "fail";
         return;
     }
     else
     {
         $_SESSION['username'] = $uname;
-        $loggedin=TRUE;
+      //  $loggedin=TRUE;
+       // echo $_SESSION['username'];
+        //  header("Location".SITE_ROOT);
     }   
 }
-
+else{
 //fetch the passed request
 $request = $_SERVER['QUERY_STRING'];
+}
+
 
 if ($request=="")
 {
@@ -94,6 +104,7 @@ foreach ($parsed as $argument)
 $target = SERVER_ROOT . '/controllers/'.$getVars['page'].'.php';
 
 $page = $getVars['page'];
+
 //get target
 if (file_exists($target))
 {

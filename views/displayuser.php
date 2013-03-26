@@ -53,18 +53,34 @@
              
           if (isset($data['users']))
           {
+              ?>
+            <table class="twelve columns"> 
+                <tr>
+                    <th>Userid</th>
+                    <th>Username</th>
+                    <th>First Name</th>
+                    <th>Second Name</th>
+                    <th>Type</th>
+                </tr>
+                <tr>   
+            <?php
               foreach ($data['users'] as $user)
               {
           ?>
-            <div class="four columns"> 
-                <h2><?=$user->id?></h2>
-                    <?=$user->username?>
-                    
-            </div>
+            
+                <td><?=$user->id?></td>
+                <td><?=$user->username?></td>
+                <td><?=$user->firstname?></td>
+                <td><?=$user->secondname?></td>
+                <td><?=$user->type?></td>
+           
       <?php
               }
-          }
               ?>
+            </tr>
+<?php         
+               }
+    ?>
       
         </div>
     </div>
