@@ -43,7 +43,7 @@
     </div>
   </div>
  <div class="row">
-        <div class="twelve columns">
+        
             <?php
             if (isset($data['addform']))
             {
@@ -69,7 +69,11 @@
             {
             ?>
             <!-- table with all the cars as well as a link to the details page --> 
-            <table class="twelve">
+            <div class="two columns">
+                
+            </div>
+            <div class="nine columns">
+            <table class="nine">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -80,7 +84,7 @@
                         <th>Date Added</th>
                         <th>View Details</th>
                 <?php 
-                    if (loggedin==true)
+                    if ($loggedin==TRUE)
                     {
                 ?>  
                         <th>Edit</th>
@@ -106,7 +110,7 @@
                 <td><?=$car->dateadded?></td>
                 <td><a href="<?=SITE_ROOT?>/index.php?page=car&action=showdetails&id=<?=$car->id?>">View details</a></td>
                 <?php 
-                    if (loggedin==true)
+                    if ($loggedin==TRUE)
                     {
                 ?>
                 <td><a href="<?=SITE_ROOT?>/index.php?page=car&action=showedits&id=<?=$car->id?>">Edit</a></td>
@@ -123,7 +127,8 @@
       <?php
             }
       ?>
-        </div>
+            </div>
+       
     </div>
       
   <!-- Included JS Files (Compressed) -->

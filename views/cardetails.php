@@ -6,17 +6,17 @@
            <p>Notes: <?=$data['carnotes']; ?></p>
            <p>Date Added: <?=$data['cardateadded']; ?></p>
            <fieldset>Images:
-           <p>
+           <ul class="block-grid three-up" data-clearing>
            <?php 
            if(isset($data['carimages']))
            {
             foreach ($data['carimages'] as $image)
             {
            ?>
-                <img src="<?=$image?>"/>
+               <li><a href="<?=$image?>"><img src="<?=$image?>"/></a></li>
            <?php
             }
            }
            ?>
-           </p>
+           </ul>
            </fieldset>

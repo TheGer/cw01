@@ -64,7 +64,7 @@ class Car_Controller
     public function main(array $getVars)
     {
      
-        
+        echo $loggedin;
         $carModel = new Car_Model;
         $contentModel = new Content_Model;
     

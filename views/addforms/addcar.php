@@ -5,6 +5,7 @@
  * and open the template in the editor.
  */
 ?>
+<div class="twelve columns">
 <form method="get" action="<?=SITE_ROOT?>">
     <input type="hidden" name="page" value="car"/>
     <input type="hidden" name="action" value="add"/>
@@ -33,3 +34,4 @@
       </label>
     <input type="submit" class="success button" value="Add new car"> 
 </form>
+</div>

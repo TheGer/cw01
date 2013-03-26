@@ -50,6 +50,7 @@ function login($username,$password)
         return false;
     }
 }
+$loggedin=FALSE;
 //post variables for login
 if ($_POST)
 {
@@ -62,6 +63,7 @@ if ($_POST)
     else
     {
         $_SESSION['username'] = $uname;
+        $loggedin=TRUE;
     }   
 }
 
