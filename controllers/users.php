@@ -26,6 +26,7 @@ class Users_Controller {
     }
 
     public function delete(array $getVars) {
+      //  print_r($getVars);
         $userModel = new Users_Model();
         $userModel->id = $getVars['id'];
         return $userModel->delete();
@@ -61,6 +62,10 @@ class Users_Controller {
         if (($getVars['action'] == 'edit') && ($loggedin)) {
             $this->edit($getVars);
         }
+        if (($getVars['action'] == 'delete') && ($loggedin)) {
+            $this->delete($getVars);
+        }
+        
 
         if ($getVars['action'] == 'logout') {
 
