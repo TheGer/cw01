@@ -26,7 +26,7 @@ class Users_Controller {
     }
 
     public function delete(array $getVars) {
-      //  print_r($getVars);
+        //  print_r($getVars);
         $userModel = new Users_Model();
         $userModel->id = $getVars['id'];
         return $userModel->delete();
@@ -65,7 +65,7 @@ class Users_Controller {
         if (($getVars['action'] == 'delete') && ($loggedin)) {
             $this->delete($getVars);
         }
-        
+
 
         if ($getVars['action'] == 'logout') {
 
@@ -105,6 +105,12 @@ class Users_Controller {
             $addform = new View_Model('addforms/adduser');
             $master->assign('addform', $addform->render(FALSE));
         }
+
+        if ($getVars['action'] == 'register') {
+            $registerform = new View_Model('addforms/registeruser');
+            $master->assign('addform', $registerform->render(FALSE));
+        }
+
         //to do here: show list of users because this is the default page for the users
 
         $loginform = new View_Model('login');
@@ -112,7 +118,9 @@ class Users_Controller {
         if (!$loggedin) {
             //show login form
             $master->assign('navigation', $navigation->render(FALSE));
-            $master->assign('loginform', $loginform->render(FALSE));
+            if (!isset($getVars['action'])) {
+                $master->assign('loginform', $loginform->render(FALSE));
+            }
         } else {
             $loggedinnav = new View_Model('loggedinnavigation');
             $loggedinnav->assign('articleslist', $contentModel->get_articles());
