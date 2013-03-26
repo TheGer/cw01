@@ -20,7 +20,7 @@
 
     </head>
     <body>
-         <!-- Included JS Files (Compressed) -->
+        <!-- Included JS Files (Compressed) -->
         <script src="javascripts/jquery.js"></script>
         <script src="javascripts/jquery-ui.js"></script>
         <script src="javascripts/foundation.min.js"></script>
@@ -53,7 +53,6 @@
         <div class="row">
             <div class="twelve columns">
                 <?php
-                
                 //display login form.
                 if (isset($data['loginform'])) {
                     echo $data['loginform'];
@@ -62,14 +61,14 @@
                 if (isset($data['addform'])) {
                     echo $data['addform'];
                 }
-                
+
                 //display list of users
                 if (isset($data['users'])) {
                     ?>
-                    <div class="three columns">
+                    <div class="two columns">
                         <a href="<?= SITE_ROOT ?>/index.php?page=users&action=showadd">Add new user</a></td>
                     </div>
-                    <table class="nine columns"> 
+                    <table class="ten columns"> 
                         <tr>
                             <th>User id</th>
                             <th>Username</th>
@@ -89,8 +88,8 @@
                                 <td><?= $user->firstname ?></td>
                                 <td><?= $user->secondname ?></td>
                                 <td><?= $user->type ?></td>
-                                <td><a href="<?= SITE_ROOT ?>/index.php?page=users&action=showedit&id=<?=$user->id ?>">Edit user</a></td>
-                                <td><a href="<?= SITE_ROOT ?>/index.php?page=users&action=delete&id=<?=$user->id ?>" onclick="return confirm('Are you sure?')">Delete user</a></td>
+                                <td><a href="<?= SITE_ROOT ?>/index.php?page=users&action=showedit&id=<?= $user->id ?>">Edit user</a></td>
+                                <td><a href="<?= SITE_ROOT ?>/index.php?page=users&action=delete&id=<?= $user->id ?>" onclick="return confirm('Are you sure?')">Delete user</a></td>
                             </tr>                               
                             <?php
                         }
@@ -103,7 +102,7 @@
             </div>
         </div>
 
-       
+
 
         <script>
                             $(window).load(function() {

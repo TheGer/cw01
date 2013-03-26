@@ -20,7 +20,7 @@
 
     </head>
     <body>
-             <!-- Included JS Files (Compressed) -->
+        <!-- Included JS Files (Compressed) -->
         <script src="javascripts/jquery.js"></script>
         <script src="javascripts/jquery-ui.js"></script>
         <script src="javascripts/foundation.min.js"></script>
@@ -72,56 +72,59 @@
                 <!-- table with all the cars as well as a link to the details page --> 
                 <div class="two columns">
 
+                    <a href="<?= SITE_ROOT ?>/index.php?page=car&action=showadd">Add new car</a></td>
                 </div>
-                <div class="nine columns">
-                    <table class="nine">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Model</th>
-                                <th>Mileage</th>
-                                <th>Engine Size</th>
-                                <th>Date Added</th>
-                                <th>View Details</th>  
-                                <th>Edit</th>    
-                            </tr>
-                        </thead>
-                        <tbody>
 
-    <?php
-    foreach ($data['carslist'] as $car) {
-        ?>
-                                <tr>     
-                                    <td><?= $car->id ?></td>
-                                    <td><?= $car->name ?></td>
-                                    <td><?= $car->model ?></td>
-                                    <td><?= $car->mileage ?></td>
-                                    <td><?= $car->enginesize ?></td>
-                                    <td><?= $car->dateadded ?></td>
-                                    <td><a href="<?= SITE_ROOT ?>/index.php?page=car&action=showdetails&id=<?= $car->id ?>">View details</a></td>
-                                    <td><a href="<?= SITE_ROOT ?>/index.php?page=car&action=showedits&id=<?= $car->id ?>">Edit</a></td>  
-                                </tr>
-        <?php
-    }
-    ?>
-                        </tbody>
-                    </table>
-    <?php
-}
-?>
             </div>
+            <div class="ten columns">
+                <table class="nine">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Model</th>
+                            <th>Mileage</th>
+                            <th>Engine Size</th>
+                            <th>Date Added</th>
+                            <th>View Details</th>  
+                            <th>Edit</th>    
+                        </tr>
+                    </thead>
+                    <tbody>
 
+                        <?php
+                        foreach ($data['carslist'] as $car) {
+                            ?>
+                            <tr>     
+                                <td><?= $car->id ?></td>
+                                <td><?= $car->name ?></td>
+                                <td><?= $car->model ?></td>
+                                <td><?= $car->mileage ?></td>
+                                <td><?= $car->enginesize ?></td>
+                                <td><?= $car->dateadded ?></td>
+                                <td><a href="<?= SITE_ROOT ?>/index.php?page=car&action=showdetails&id=<?= $car->id ?>">View details</a></td>
+                                <td><a href="<?= SITE_ROOT ?>/index.php?page=car&action=showedits&id=<?= $car->id ?>">Edit</a></td>  
+                            </tr>
+                            <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+                <?php
+            }
+            ?>
         </div>
 
-   
+    </div>
 
-        <script>
-            $(window).load(function() {
-                $("#detailimages").orbit();
-                $("#featured").orbit();
-            });
-        </script> 
 
-    </body>
+
+    <script>
+        $(window).load(function() {
+            $("#detailimages").orbit();
+            $("#featured").orbit();
+        });
+    </script> 
+
+</body>
 </html>

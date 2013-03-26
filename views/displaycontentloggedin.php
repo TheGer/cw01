@@ -54,6 +54,8 @@
             <!-- table with all the cars as well as a link to the details page --> 
             <div class="two columns">
 
+                        <a href="<?= SITE_ROOT ?>/index.php?page=content&action=showadd">Add new page</a></td>
+                  
             </div>
             <div class="nine columns">
                 <table class="nine">
