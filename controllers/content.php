@@ -14,6 +14,8 @@ class Content_Controller {
     public function add(array $getVars) {
         $contentModel = new Content_Model();
         $contentModel->authorid = $getVars['authorid'];
+        $contentModel->title = $getVars['title'];
+        
         $contentModel->content = $getVars['content'];
         $contentModel->date = $getVars['date'];
 
