@@ -36,6 +36,34 @@ function __autoload($className)
     }
 }
 
+function login($username,$password)
+{
+    $result = MyActiveRecord::Query("select * from users_model where username = $username and password = MD5('$password')");
+    
+    if ($result.next())
+    {
+        //returns true if the query is found
+        return true;
+    }
+    else {
+        //returns false if the query fails.
+        return false;
+    }
+}
+//post variables for login
+if ($_POST)
+{
+    $uname = $_POST['username'];
+    $pword = $_POST['pword'];
+    if (!login($uname,$pword))
+    {
+        return;
+    }
+    else
+    {
+        $_SESSION['username'] = $uname;
+    }   
+}
 
 //fetch the passed request
 $request = $_SERVER['QUERY_STRING'];
