@@ -5,7 +5,7 @@
  * and open the template in the editor.
  */
 
-class Content_Controller
+class Viewing_Controller
 {
     //template
     public $template='displayviewing';
