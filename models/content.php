@@ -22,6 +22,7 @@ class Content_Model extends MyActiveRecord {
     public function __construct() {
         //    print 'I am the frontpage model';
         //db calls go here.  So for instance get list of articles etc...
+        $this->date = time();
     }
 
     public function get_article($id) {

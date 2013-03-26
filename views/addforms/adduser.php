@@ -15,11 +15,20 @@
         <input type="text" name="username" />
         <label class="left inline">Name:</label> 
         <input type="text" name="firstname" />
+         <label class="left inline">Surname:</label> 
+        <input type="text" name="secondname" />
+        <label class="left inline">Address:</label> 
+        <input type="text" name="address" />
         <label class="left inline">Password:</label> 
         <input type="text" name="pword1" id="password1" />
         <label class="left inline">Confirm Password:</label> 
         <input type="text" name="pword2" id="password2" />
         <!-- to do add user types -->
+        <select name="type">
+            <option value="1">DMS</option>
+            <option value="2" selected="selected">Frontpage</option>
+            <option value="3">CMS</option>          
+        </select>
         <input type="submit" value="add new user"/>
     </form>
 </div>

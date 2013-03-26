@@ -16,6 +16,8 @@ class Car_Model extends MyActiveRecord {
     public $notes;
     public $dateadded;
     public $featured;
+    public $color;
+    public $cartype;
 
     public function __construct() {
         //    print 'I am the frontpage model';

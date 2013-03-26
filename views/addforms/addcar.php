@@ -31,6 +31,14 @@ $("#addcar").submit(function(){
         <input type="text" name="enginesize" />
         <label class="left inline">Mileage:</label> 
         <input type="text" name="mileage" />
+        <label class="left inline">Color:</label>
+        <input type="text" name="color" />
+        <label class="left inline">Car type:</label>
+        <select name="cartype">
+            <option value="saloon">Saloon</option>
+            <option value="hatchback">Hatchback</option>
+            <option value="van">Van</option>
+        </select>
         <label class="left inline">Date added:</label> 
         <input type="text" id="dpicker" name="dateadded" />
         <label class="left inline">Notes:</label> 

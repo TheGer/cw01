@@ -60,7 +60,8 @@
                 ?>
                 <!-- table with all the cars as well as a link to the details page --> 
                 <div class="two columns">
-
+                    <p><a href="<?= SITE_ROOT ?>/index.php?page=car&action=bookviewing">book viewing</a></p>
+                    <p><a href="<?= SITE_ROOT ?>/index.php?page=car&action=showsearch">search</a></p>
                 </div>
                 <div class="nine columns">
                     <table class="nine">

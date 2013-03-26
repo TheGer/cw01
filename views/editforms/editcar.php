@@ -23,6 +23,13 @@
     <label class="left inline">Date added:</label> 
     <input type="text" class="error" name="dateadded" id="datepicker" value="<?= $data['dateaddedtoedit'] ?>" />
     <small class="error">Missing date</small>
+    
+    
+    <label class="left inline">Color:</label>
+        <input type="text" name="color" value="<?= $data['color'] ?>"/>
+      
+    
+    
     <label class="left inline">Notes:</label> 
     <textarea name="notes" class="error">value="<?= $data['notestoedit'] ?>"</textarea>
     <small class="error">Missing notes</small>

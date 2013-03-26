@@ -44,6 +44,8 @@ class Users_Model extends MyActiveRecord {
         //  return $this->articles;
     }
 
+    
+    
    
 }
 

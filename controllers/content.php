@@ -18,7 +18,7 @@ class Content_Controller {
         $contentModel->title = $getVars['title'];  
         $contentModel->name = $getVars['name'];  
         $contentModel->content = $getVars['content'];
-        $contentModel->date=time();
+       
 
 
         return $contentModel->save();
