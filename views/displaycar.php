@@ -20,11 +20,13 @@
 
     </head>
     <body>
+          
+
               <!-- Included JS Files (Compressed) -->
         <script src="javascripts/jquery.js"></script>
+         <script src="javascripts/foundation.min.js"></script>
         <script src="javascripts/jquery-ui.js"></script>
-        <script src="javascripts/foundation.min.js"></script>
-
+    
         <!-- Initialize JS Plugins -->
         <script src="javascripts/app.js"></script>
 
