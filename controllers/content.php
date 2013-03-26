@@ -101,6 +101,7 @@ class Content_Controller {
         }
 
         if (($getVars['action'] == 'showadd') && ($loggedin)) {
+            
             $addform = new View_Model('addforms/addcontent');
             $master->assign('addform', $addform->render(FALSE));
         }

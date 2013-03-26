@@ -40,9 +40,10 @@ function login($username,$password)
 {
     $result = MyActiveRecord::Query("select * from users_model where username = '$username' and password = MD5('$password')");
     
-    if (mysql_fetch_array($result))
+    if ($row = mysql_fetch_array($result))
     {
         //returns true if the query is found
+        $_SESSION['userid'] = $row['id'];
         return true;
     }
     else {

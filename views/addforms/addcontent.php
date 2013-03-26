@@ -8,6 +8,9 @@
     <form method="get" action="<?= SITE_ROOT ?>">
         <input type="hidden" name="page" value="content"/>
         <input type="hidden" name="action" value="add"/>
+        <input type="hidden" name="authorid" value="<?=$_SESSION['userid']?>"/>
+        Title: <input type="text" name="title"/>
+        Text:
         <textarea name="content">
         </textarea>
         <input type="submit" value="add new content"/>

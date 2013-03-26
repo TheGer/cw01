@@ -53,6 +53,22 @@
             </div>
         </div>
         <div class="row">
+            
+            <?php
+              if (isset($data['addform'])) {
+                echo $data['addform'];
+            }
+
+
+            if (isset($data['editform'])) {
+                echo $data['editform'];
+              
+            }
+            
+            ?>
+            
+            
+            
             <!-- table with all the cars as well as a link to the details page --> 
             <div class="two columns">
                <a href="<?= SITE_ROOT ?>/index.php?page=content&action=showadd">Add new page</a></td>
