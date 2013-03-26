@@ -73,9 +73,7 @@
                 <div class="two columns">
 
                     <a href="<?= SITE_ROOT ?>/index.php?page=car&action=showadd">Add new car</a></td>
-                </div>
-
-            </div>
+                </div>  
             <div class="ten columns">
                 <table class="nine">
                     <thead>
