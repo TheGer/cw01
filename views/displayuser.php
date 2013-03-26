@@ -45,10 +45,18 @@
         <div class="row">
             <div class="twelve columns">
                 <?php
+                
+                //display login form.
                 if (isset($data['loginform'])) {
                     echo $data['loginform'];
                 }
-
+                //display add user form.
+                if (isset($data['addform'])) {
+                    echo $data['addform'];
+                }
+                
+                
+                //display list of users
                 if (isset($data['users'])) {
                     ?>
                     <div class="three columns">
