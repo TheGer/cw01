@@ -45,9 +45,14 @@
  <div class="row">
         <div class="twelve columns">
           <?php
-          
+          if (isset($data['loginform']))
+          {
+              echo $data['loginform'];
               
-              
+          }
+             
+          if (isset($data['users']))
+          {
               foreach ($data['users'] as $user)
               {
           ?>
@@ -58,6 +63,7 @@
             </div>
       <?php
               }
+          }
               ?>
       
         </div>

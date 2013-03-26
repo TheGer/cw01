@@ -71,7 +71,7 @@ class Users_Controller
         $navigation->assign('articleslist',$contentModel->get_articles());
         
         
-        $addform = new View_Model('adduser');
+      
         
         
         $master = new View_Model($this->template);
@@ -95,6 +95,7 @@ class Users_Controller
         
         if ($getVars['action']=='showadd')
         {
+              $addform = new View_Model('adduser');
             $master->assign('addform',$addform->render(FALSE));
             
         }
@@ -102,7 +103,12 @@ class Users_Controller
         
         //to do here: show list of users because this is the default page for the users
        
+        $loginform = new View_Model('login');
+        $master->assign('loginform',$loginform->render(FALSE));
+        
         $master->assign('navigation',$navigation->render(FALSE));
+        
+        
         
         //if the edit link was pressed
         
