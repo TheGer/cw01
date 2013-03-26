@@ -10,24 +10,17 @@ class Content_Controller
     //template
     public $template='displayviewing';
     
-     public function delete(array $getVars){
-        $viewingModel = new Viewing_Model();
-        $viewingModel->id = $getVars['id'];
-        return $viewingModel->delete();
-        
-    }
-    
-    
     //function to add content
     public function add(array $getVars)
     {
         $viewingModel = new Viewing_Model();
-        $viewingModel->authorid = $getVars['authorid'];
-        $contentModel->content = $getVars['content'];
-        $contentModel->date = $getVars['date'];
+        $viewingModel->booked = $getVars['booked'];
+        $viewingModel->userid = $getVars['userid'];
+        $viewingModel->carid = $getVars['carid'];
+        $viewingModel->dateofviewing = $getVars['dateofviewing'];
         
         
-        return $contentModel->save();
+        return $viewingModel->save();
         
     }
     
@@ -35,12 +28,22 @@ class Content_Controller
     
     public function edit(array $getVars)
     {
-        $contentModel = new Content_Model();
+        $viewingModel = new Viewing_Model();
+        $viewingModel->booked = $getVars['booked'];
+        $viewingModel->userid = $getVars['userid'];
+        $viewingModel->carid = $getVars['carid'];
+        $viewingModel->dateofviewing = $getVars['dateofviewing'];
         
-        $contentModel->content = $getVars['content'];
         
-        $contentModel->id = $getVars['id'];
-        return $contentModel->save();
+        return $viewingModel->save();
+        
+        
+    }
+    
+     public function delete(array $getVars){
+        $viewingModel = new Viewing_Model();
+        $viewingModel->id = $getVars['id'];
+        return $viewingModel->delete();
         
     }
             

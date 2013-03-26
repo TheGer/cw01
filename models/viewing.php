@@ -12,7 +12,7 @@ class Viewing_Model extends MyActiveRecord {
     public $userid;
     public $carid;
     public $dateofviewing;
-    public $booked;
+
 
     public function get_viewing($id) {
         $sql = $this->Prepare("select * from viewing_model where id = $id");

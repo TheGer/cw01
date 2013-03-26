@@ -87,7 +87,8 @@
                             <th>Engine Size</th>
                             <th>Date Added</th>
                             <th>View Details</th>  
-                            <th>Edit</th>    
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
