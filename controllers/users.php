@@ -65,6 +65,11 @@ class Users_Controller
             $this->edit($getVars);
         }
         
+        if ($getVars['action']=='logout')
+        {
+            session_destroy();
+        }
+        
         
         $navigation = new View_Model('navigation');
         
@@ -111,15 +116,19 @@ class Users_Controller
         
         if (!isset($_SESSION['username']))
         {
+        $master->assign('navigation',$navigation->render(FALSE));
         $master->assign('loginform',$loginform->render(FALSE));
         }
         else 
         {
+        $loggedinnav = new View_Model('loggedinnavigation');
+        $loggedinnav->assign('articleslist',$contentModel->get_articles());
+        $master->assign('navigation',$loggedinnav->render(FALSE));
         $master->assign('users',$userModel->get_users());    
         }
         
         
-        $master->assign('navigation',$navigation->render(FALSE));
+        
         
         
         

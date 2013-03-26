@@ -92,8 +92,19 @@ class Car_Controller
         $master = new View_Model($this->template);  
         $master->assign('carslist',$carModel->get_cars_default()); 
 
+         if (!isset($_SESSION['username']))
+        {
         $master->assign('navigation',$navigation->render(FALSE));
-        
+        $master->assign('loginform',$loginform->render(FALSE));
+        }
+        else 
+        {
+        $loggedinnav = new View_Model('loggedinnavigation');
+        $loggedinnav->assign('articleslist',$contentModel->get_articles());
+        $master->assign('navigation',$loggedinnav->render(FALSE));
+            
+        }
+         
         
         if ($getVars['action']=='showdetails')
          {

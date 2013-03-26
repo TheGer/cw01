@@ -62,8 +62,19 @@ class Content_Controller
         }
         
         
-        $navigation = new View_Model('navigation');
-        
+       if (!isset($_SESSION['username']))
+        {
+        $master->assign('navigation',$navigation->render(FALSE));
+        $master->assign('loginform',$loginform->render(FALSE));
+        }
+        else 
+        {
+        $loggedinnav = new View_Model('loggedinnavigation');
+        $loggedinnav->assign('articleslist',$contentModel->get_articles());
+        $master->assign('navigation',$loggedinnav->render(FALSE));
+       
+        }
+            
         $navigation->assign('articleslist',$contentModel->get_articles());
         
         
