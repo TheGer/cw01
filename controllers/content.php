@@ -85,7 +85,7 @@ class Content_Controller {
         }
 
 
-        $addform = new View_Model('addcontent');
+       
 
 
         //assign article data to view
@@ -94,13 +94,14 @@ class Content_Controller {
             $id = $getVars['id'];
             //     echo $id;
             $contentModel = array_shift($contentModel->get_article($id));
-            $editform = new View_Model('editcontent');
+            $editform = new View_Model('editforms/editcontent');
             $editform->assign('idtoedit', $contentModel->id);
             $editform->assign('texttoedit', $contentModel->content);
             $master->assign('editform', $editform->render(FALSE));
         }
 
         if (($getVars['action'] == 'showadd') && ($loggedin)) {
+            $addform = new View_Model('addforms/addcontent');
             $master->assign('addform', $addform->render(FALSE));
         }
 
