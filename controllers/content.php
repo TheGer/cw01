@@ -12,12 +12,13 @@ class Content_Controller {
 
     //function to add content
     public function add(array $getVars) {
+    //echo "test".$getVars['title'];
         $contentModel = new Content_Model();
         $contentModel->authorid = $getVars['authorid'];
-        $contentModel->title = $getVars['title'];
-        
+        $contentModel->title = $getVars['title'];  
+        $contentModel->name = $getVars['name'];  
         $contentModel->content = $getVars['content'];
-        $contentModel->date = $getVars['date'];
+        $contentModel->date=time();
 
 
         return $contentModel->save();
