@@ -1,4 +1,5 @@
 <?php
+define('SERVER_ROOT', 'c:\xampp\htdocs\cw01');
 define('MYACTIVERECORD_CONNECTION_STR', 'mysql://root@localhost/coursework');
 
 require("../../libraries/MyActiveRecord.php");
@@ -33,11 +34,26 @@ class Car_ControllerTest extends PHPUnit_Framework_TestCase {
     }
 
     
-    //currently three cars in db
+    //if there are three cars in DB test that the count is accurate
     public function testCarCount(){
-        $this->assertEquals(3,$this->object->carcount()); 
+        $this->assertEquals(2,$this->object->carcount()); 
     }
    
-
+    
+    //tests deleting a car with ID 2
+    public function testDelete()
+    {
+        $simulatedGetVars = Array();
+        $simulatedGetVars['id'] = 2;
+        $this->object->delete($simulatedGetVars);
+        $this->assertEquals(2,$this->object->carcount());
+    }
+    
+    
+    public function testGetCarImages()
+    {
+        $numberofimages = count($this->object->getcarimages(1));
+         $this->assertEquals(2,$numberofimages);
+    }
     
 }

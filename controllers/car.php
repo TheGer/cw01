@@ -63,6 +63,20 @@ $carModel->color = $getVars['color'];
         return $carModel->get_car_count();
     }
     
+    public function getcarimages($id)
+    {
+        $carimages = Array();
+
+            if ($handle = opendir(SERVER_ROOT . '/uploads/' . $id . '/')) {
+                while (false !== ($entry = readdir($handle))) {
+                    if ($entry != "." && $entry != "..") {
+                        array_push($carimages, $entry);
+                    }
+                }
+            }
+            return $carimages;
+    }
+    
     public function main(array $getVars) {
 
         $loggedin = false;
@@ -123,16 +137,8 @@ $carModel->color = $getVars['color'];
             $detailsview->assign('carnotes', $carmodel->notes);
             $detailsview->assign('cardateadded', $carmodel->dateadded);
 
-            $carimages = Array();
-
-            if ($handle = opendir(SERVER_ROOT . '/uploads/' . $id . '/')) {
-                while (false !== ($entry = readdir($handle))) {
-                    if ($entry != "." && $entry != "..") {
-                        array_push($carimages, $entry);
-                    }
-                }
-            }
-            $detailsview->assign('carimages', $carimages);
+            
+            $detailsview->assign('carimages', $this->getcarimages($id));
 
 
             $master->assign('detailsview', $detailsview->render(FALSE));
