@@ -70,9 +70,9 @@
                                 <td><a href="<?= SITE_ROOT ?>/index.php?page=content&action=showdetails&id=<?= $content->id ?>">View details</a></td>
                                 <td><a href="<?= SITE_ROOT ?>/index.php?page=content&action=showedit&id=<?= $content->id ?>">Edit</a></td>
                             </tr>
-    <?php
-}
-?>
+                            <?php
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>

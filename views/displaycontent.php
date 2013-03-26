@@ -3,82 +3,81 @@
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-<head>
-  <meta charset="utf-8" />
+    <head>
+        <meta charset="utf-8" />
 
-  <!-- Set the viewport width to device width for mobile -->
-  <meta name="viewport" content="width=1000" />
+        <!-- Set the viewport width to device width for mobile -->
+        <meta name="viewport" content="width=1000" />
 
-  <title>Car Dealership</title>
- 
-  <!-- Included CSS Files (Compressed) -->
-  <link rel="stylesheet" href="stylesheets/foundation.min.css">
-  <link rel="stylesheet" href="stylesheets/app.css">
+        <title>Car Dealership</title>
 
-  <script src="javascripts/modernizr.foundation.js"></script>
+        <!-- Included CSS Files (Compressed) -->
+        <link rel="stylesheet" href="stylesheets/foundation.min.css">
+        <link rel="stylesheet" href="stylesheets/app.css">
 
-  
-</head>
-<body>
+        <script src="javascripts/modernizr.foundation.js"></script>
 
-  <div class="row">
-    <div class="twelve columns">
-      <h2>Online Car Showroom</h2>
-      <hr />
-    </div>
-  </div>
-    <div class="row">
-       <!-- Entire Navbar Code -->
-       <div class="twelve columns">
-           <?=$data['navigation'];?>
-       </div>
-    </div>
-  <div class="row">
-    <div class="twelve columns">
-      <div id="featured">
-        <img src="code_images/slide1.jpg" alt="slide image">
-        <img src="code_images/slide2.jpg" alt="slide image">
-        <img src="code_images/slide3.jpg" alt="slide image">
-      </div>
-    </div>
-  </div>
- <div class="row">
-        <div class="twelve columns">
-          <?php
-            //if logged in, display the editor window like so:
-           //echo $data['addform']; 
-          
-          
-              foreach ($data['article'] as $article)
-              {
-          ?>
-            
-                <h2><?=$article->title?></h2>
-                    <?=$article->content?>
-                    
+
+    </head>
+    <body>
+
+        <div class="row">
+            <div class="twelve columns">
+                <h2>Online Car Showroom</h2>
+                <hr />
             </div>
-      <?php
-              }
-              ?>
-      
-       </div>
-    
-      
-  <!-- Included JS Files (Compressed) -->
-  <script src="javascripts/jquery.js"></script>
-  <script src="javascripts/jquery-ui.js"></script>
-  <script src="javascripts/foundation.min.js"></script>
-  
-  <!-- Initialize JS Plugins -->
-  <script src="javascripts/app.js"></script>
+        </div>
+        <div class="row">
+            <!-- Entire Navbar Code -->
+            <div class="twelve columns">
+                <?= $data['navigation']; ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="twelve columns">
+                <div id="featured">
+                    <img src="code_images/slide1.jpg" alt="slide image">
+                    <img src="code_images/slide2.jpg" alt="slide image">
+                    <img src="code_images/slide3.jpg" alt="slide image">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="twelve columns">
+                <?php
+                //if logged in, display the editor window like so:
+                //echo $data['addform']; 
 
-  
-    <script>
-    $(window).load(function(){
-      $("#detailimages").orbit();  
-      $("#featured").orbit();
-    });
-    </script> 
-  
-</body>
+
+                foreach ($data['article'] as $article) {
+                    ?>
+
+                    <h2><?= $article->title ?></h2>
+                    <?= $article->content ?>
+
+                </div>
+                <?php
+            }
+            ?>
+
+        </div>
+
+
+        <!-- Included JS Files (Compressed) -->
+        <script src="javascripts/jquery.js"></script>
+        <script src="javascripts/jquery-ui.js"></script>
+        <script src="javascripts/foundation.min.js"></script>
+
+        <!-- Initialize JS Plugins -->
+        <script src="javascripts/app.js"></script>
+
+
+        <script>
+            $(window).load(function() {
+                $("#detailimages").orbit();
+                $("#featured").orbit();
+            });
+        </script> 
+
+    </body>
 </html>
