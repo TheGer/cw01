@@ -55,7 +55,10 @@ class Content_Controller {
         if (($getVars['action'] == 'edit') && ($loggedin)) {
             $this->edit($getVars);
         }
-
+        
+        if (($getVars['action'] == 'delete') && ($loggedin)) {
+            $this->delete($getVars);
+        }
 
         $navigation = new View_Model('navigation');
         $navigation->assign('articleslist', $contentModel->get_articles());

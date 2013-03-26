@@ -81,7 +81,7 @@
                             <th>ID</th>
                             <th>Name</th>
                             <th>Date</th>
-                            <th>View Details</th>
+                            <th>Delete</th>
                             <th>Edit</th>
                         </tr>
                     </thead>
@@ -94,7 +94,7 @@
                                 <td><?= $content->id ?></td>
                                 <td><?= $content->name ?></td>
                                 <td><?= $content->date ?></td>
-                                <td><a href="<?= SITE_ROOT ?>/index.php?page=content&action=showdetails&id=<?= $content->id ?>">View details</a></td>
+                                <td><a href="<?= SITE_ROOT ?>/index.php?page=content&action=delete&id=<?= $content->id ?>">Delete</a></td>
                                 <td><a href="<?= SITE_ROOT ?>/index.php?page=content&action=showedit&id=<?= $content->id ?>">Edit</a></td>
                             </tr>
                             <?php
