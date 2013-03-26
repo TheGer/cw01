@@ -18,7 +18,11 @@ class Content_Controller {
         $contentModel->title = $getVars['title'];  
         $contentModel->name = $getVars['name'];  
         $contentModel->content = $getVars['content'];
-       
+      
+        
+//added this comment to the application to show a commit
+
+ 
 
 
         return $contentModel->save();
