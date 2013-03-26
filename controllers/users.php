@@ -90,7 +90,7 @@ class Users_Controller {
             $id = $getVars['id'];
             //  echo $id;
             $userModel = array_shift($userModel->get_user_by_id($id));
-            $editform = new View_Model('edituser');
+            $editform = new View_Model('editforms/edituser');
             $editform->assign('idtoedit', $userModel->id);
             $editform->assign('passwordtoedit', $userModel->password);
             $editform->assign('firstnametoedit', $userModel->firstname);
@@ -102,7 +102,7 @@ class Users_Controller {
         }
 
         if (($getVars['action'] == 'showadd') && ($loggedin)) {
-            $addform = new View_Model('adduser');
+            $addform = new View_Model('addforms/adduser');
             $master->assign('addform', $addform->render(FALSE));
         }
         //to do here: show list of users because this is the default page for the users

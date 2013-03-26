@@ -53,11 +53,11 @@ function login($username,$password)
 
 //post variables for login
 //print_r($_SERVER);
-if (isset($_GET["username"]))
+if (isset($_GET["loginusername"]))
 {
     
     
-    $uname = $_GET["username"];
+    $uname = $_GET["loginusername"];
     $pword = $_GET["password"];
     
     
