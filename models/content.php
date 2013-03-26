@@ -47,6 +47,10 @@ class Content_Model extends MyActiveRecord {
         //  return $this->articles;
     }
 
+    public function delete($id) {
+        $this->Query("delete from content_model where id=$id");
+    }
+
 }
 
 ?>

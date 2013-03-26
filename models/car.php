@@ -46,6 +46,11 @@ class Car_Model extends MyActiveRecord {
         return $this->Count($this);
     }
 
+    public function delete($id) {
+
+        $this->Query("delete from car_model where id=$id");
+    }
+
 }
 
 ?>

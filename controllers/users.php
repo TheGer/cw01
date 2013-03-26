@@ -38,6 +38,11 @@ class Users_Controller {
         return $userModel->save();
     }
 
+    public function delete(array $getVars) {
+        $userModel = new Users_Model();
+        $userModel->delete($getVars['id']);
+    }
+
     public function main(array $getVars) {
 
         $loggedin = false;
@@ -94,7 +99,7 @@ class Users_Controller {
             $addform = new View_Model('adduser');
             $master->assign('addform', $addform->render(FALSE));
         }
-       //to do here: show list of users because this is the default page for the users
+        //to do here: show list of users because this is the default page for the users
 
         $loginform = new View_Model('login');
 

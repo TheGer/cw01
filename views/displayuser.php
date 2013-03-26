@@ -51,6 +51,9 @@
 
                 if (isset($data['users'])) {
                     ?>
+                    <div class="three columns">
+                        <a href="<?= SITE_ROOT ?>/index.php?page=users&action=showadd">Add new user</a></td>
+                    </div>
                     <table class="nine columns"> 
                         <tr>
                             <th>User id</th>
@@ -58,25 +61,29 @@
                             <th>First Name</th>
                             <th>Second Name</th>
                             <th>Type</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
-                        <tr>   
-    <?php
-    foreach ($data['users'] as $user) {
-        ?>
 
+                        <?php
+                        foreach ($data['users'] as $user) {
+                            ?>
+                            <tr> 
                                 <td><?= $user->id ?></td>
                                 <td><?= $user->username ?></td>
                                 <td><?= $user->firstname ?></td>
                                 <td><?= $user->secondname ?></td>
                                 <td><?= $user->type ?></td>
-
-        <?php
-    }
-    ?>
-                        </tr>
+                                <td><a href="<?= SITE_ROOT ?>/index.php?page=users&action=showedit&id=<?= $car->id ?>">Edit user</a></td>
+                                <td><a href="<?= SITE_ROOT ?>/index.php?page=users&action=delete&id=<?= $car->id ?>" onclick="return confirm('Are you sure?')">Delete user</a></td>
+                            </tr>                               
                             <?php
                         }
                         ?>
+
+                        <?php
+                    }
+                    ?>
 
             </div>
         </div>
@@ -91,10 +98,10 @@
 
 
         <script>
-            $(window).load(function() {
-                $("#detailimages").orbit();
-                $("#featured").orbit();
-            });
+                            $(window).load(function() {
+                                $("#detailimages").orbit();
+                                $("#featured").orbit();
+                            });
         </script> 
 
     </body>
