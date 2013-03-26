@@ -50,27 +50,31 @@ class Users_Controller
     public function main(array $getVars)
     {
       
-        
+        $loggedin=false;
+        if (isset($_SESSION['username']))
+        {
+            $loggedin=true;
+        }
         $contentModel = new Content_Model;
         $userModel = new Users_Model;
      
-        if ($getVars['action']=='add')
+        if (($getVars['action']=='add') && ($loggedin))
         {
        //     echo 'add';
             $this->add($getVars);
         }
         
-        if ($getVars['action']=='edit')
+        if (($getVars['action']=='edit') && ($loggedin))
         {
             $this->edit($getVars);
         }
         
-        if ($getVars['action']=='logout')
+        if ($getVars['action']=='logout') 
         {
            
             session_destroy();
             //when you log out, take the user outside
-            header("Location".SITE_ROOT);
+            header("Location:".SITE_ROOT);
         }
         
         
@@ -85,7 +89,7 @@ class Users_Controller
         $master = new View_Model($this->template);
           //assign article data to view
         
-        if ($getVars['action']=='showedit')
+        if (($getVars['action']=='showedit') && ($loggedin))
         {
             $id = $getVars['id'];
             echo $id;
@@ -101,7 +105,7 @@ class Users_Controller
             $master->assign('editform',$editform->render(FALSE));
         }
         
-        if ($getVars['action']=='showadd')
+        if (($getVars['action']=='showadd') && ($loggedin))
         {
               $addform = new View_Model('adduser');
             $master->assign('addform',$addform->render(FALSE));
@@ -117,7 +121,7 @@ class Users_Controller
        
         
         
-        if (!isset($_SESSION['username']))
+        if (!$loggedin)
         {
         $master->assign('navigation',$navigation->render(FALSE));
         $master->assign('loginform',$loginform->render(FALSE));

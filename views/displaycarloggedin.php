@@ -44,7 +44,23 @@
   </div>
  <div class="row">
         
-            <?php  
+            <?php
+            if (isset($data['addform']))
+            {
+                echo $data['addform'];
+                
+            }
+            
+            
+            if(isset($data['editform']))
+            {
+                echo $data['editform'];
+                echo "<br/>";
+                echo $data['editimagesform'];
+                
+            }
+            
+            
             if (isset($data['detailsview']))
             {
             echo $data['detailsview'];
@@ -66,7 +82,8 @@
                         <th>Mileage</th>
                         <th>Engine Size</th>
                         <th>Date Added</th>
-                        <th>View Details</th>     
+                        <th>View Details</th>  
+                        <th>Edit</th>    
                     </tr>
                 </thead>
                 <tbody>
@@ -84,6 +101,7 @@
                 <td><?=$car->enginesize?></td>
                 <td><?=$car->dateadded?></td>
                 <td><a href="<?=SITE_ROOT?>/index.php?page=car&action=showdetails&id=<?=$car->id?>">View details</a></td>
+                <td><a href="<?=SITE_ROOT?>/index.php?page=car&action=showedits&id=<?=$car->id?>">Edit</a></td>  
                </tr>
       <?php
               }
