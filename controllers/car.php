@@ -85,17 +85,17 @@ class Car_Controller
         }
         
         
-        $navigation = new View_Model('navigation');
-        //get the list of articles for the top menu bar
-        $navigation->assign('articleslist',$contentModel->get_articles());
+      
         
         $master = new View_Model($this->template);  
         $master->assign('carslist',$carModel->get_cars_default()); 
 
          if (!isset($_SESSION['username']))
         {
+        $navigation = new View_Model('navigation');
+        $navigation->assign('articleslist',$contentModel->get_articles());
         $master->assign('navigation',$navigation->render(FALSE));
-        $master->assign('loginform',$loginform->render(FALSE));
+     
         }
         else 
         {

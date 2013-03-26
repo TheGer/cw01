@@ -69,6 +69,8 @@ class Users_Controller
         {
            
             session_destroy();
+            //when you log out, take the user outside
+            header("Location".SITE_ROOT);
         }
         
         
