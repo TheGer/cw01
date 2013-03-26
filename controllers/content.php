@@ -41,33 +41,27 @@ class Content_Controller
     
     public function main(array $getVars)
     {
-      /*  $vars = print_r($getVars,TRUE);
-        print "welcome to the frontpage controller";
-        print $vars;*/
         
         $contentModel = new Content_Model;
-     //   print_r($frontpageModel->print_articles());
-        
-       // $article = $contentModel->get_article($getVars['article']);
-        
+        $master = new View_Model($this->template);  
         if ($getVars['action']=='add')
         {
-       //     echo 'add';
             $this->add($getVars);
         }
         
-        if ($getVars['action']=='edit')
+       if ($getVars['action']=='edit')
         {
             $this->edit($getVars);
         }
         
         
         $navigation = new View_Model('navigation');
+        $navigation->assign('articleslist',$contentModel->get_articles());
         
      if (!isset($_SESSION['username']))
         {
         $master->assign('navigation',$navigation->render(FALSE));
-        $master->assign('loginform',$loginform->render(FALSE));
+     //   $master->assign('loginform',$loginform->render(FALSE));
         }
         else 
         {
@@ -81,7 +75,6 @@ class Content_Controller
         $addform = new View_Model('addcontent');
         
         
-        $master = new View_Model($this->template);
           //assign article data to view
         
         if ($getVars['action']=='showedit')
@@ -110,7 +103,6 @@ class Content_Controller
         {
             $master->assign('article',$contentModel->get_article_by_name("home"));
         }
-        $master->assign('navigation',$navigation->render(FALSE));
         
         //if the edit link was pressed
         

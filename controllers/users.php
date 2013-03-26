@@ -67,6 +67,7 @@ class Users_Controller
         
         if ($getVars['action']=='logout')
         {
+           
             session_destroy();
         }
         
