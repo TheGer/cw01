@@ -54,7 +54,7 @@
           if (isset($data['users']))
           {
               ?>
-            <table class="twelve columns"> 
+            <table class="nine columns"> 
                 <tr>
                     <th>Userid</th>
                     <th>Username</th>

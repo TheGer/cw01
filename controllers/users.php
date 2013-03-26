@@ -92,7 +92,7 @@ class Users_Controller
         if (($getVars['action']=='showedit') && ($loggedin))
         {
             $id = $getVars['id'];
-            echo $id;
+          //  echo $id;
             $userModel = array_shift($userModel->get_user_by_id($id));
             $editform = new View_Model('edituser');
             $editform->assign('idtoedit',$userModel->id);
@@ -123,6 +123,7 @@ class Users_Controller
         
         if (!$loggedin)
         {
+            //show login form
         $master->assign('navigation',$navigation->render(FALSE));
         $master->assign('loginform',$loginform->render(FALSE));
         }
