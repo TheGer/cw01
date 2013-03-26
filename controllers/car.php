@@ -47,6 +47,13 @@ class Car_Controller {
         return $carModel->save();
     }
 
+    public function delete(array $getVars){
+        $carModel = new Car_Model();
+        $carModel->id = $getVars['id'];
+        return $carModel->delete();
+        
+    }
+    
     public function main(array $getVars) {
 
         $loggedin = false;
@@ -67,6 +74,11 @@ class Car_Controller {
 
         if ($getVars['action'] == 'edit') {
             $this->edit($getVars);
+        }
+        
+        if ($getVars['action']=='delete')
+        {
+            $this->delete($getVars);
         }
 
 

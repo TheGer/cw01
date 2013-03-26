@@ -44,10 +44,7 @@ class Users_Model extends MyActiveRecord {
         //  return $this->articles;
     }
 
-    public function delete($id) {
-        $this->Query("delete from users_model where id=$id");
-    }
-
+   
 }
 
 ?>

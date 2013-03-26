@@ -38,10 +38,7 @@ class Viewing_Model extends MyActiveRecord {
         //  return $this->articles;
     }
 
-    public function delete($id) {
-        $this->Query("delete from viewing_model where id=$id");
-    }
-
+  
 }
 
 ?>

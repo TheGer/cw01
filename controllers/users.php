@@ -25,6 +25,12 @@ class Users_Controller {
         return $userModel->save();
     }
 
+    public function delete(array $getVars) {
+        $userModel = new Users_Model();
+        $userModel->id = $getVars['id'];
+        return $userModel->delete();
+    }
+
     public function edit(array $getVars) {
         $userModel = new Users_Model();
 

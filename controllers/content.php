@@ -20,6 +20,15 @@ class Content_Controller {
 
         return $contentModel->save();
     }
+    
+    
+     public function delete(array $getVars){
+        $contentModel = new Content_Model();
+        $contentModel->id = $getVars['id'];
+        return $contentModel->delete();
+        
+    }
+    
 
     public function edit(array $getVars) {
         $contentModel = new Content_Model();

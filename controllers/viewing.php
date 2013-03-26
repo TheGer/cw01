@@ -8,15 +8,21 @@
 class Content_Controller
 {
     //template
-    public $template='displaycontent';
+    public $template='displayviewing';
     
+     public function delete(array $getVars){
+        $viewingModel = new Viewing_Model();
+        $viewingModel->id = $getVars['id'];
+        return $viewingModel->delete();
+        
+    }
     
     
     //function to add content
     public function add(array $getVars)
     {
-        $contentModel = new Content_Model();
-        $contentModel->authorid = $getVars['authorid'];
+        $viewingModel = new Viewing_Model();
+        $viewingModel->authorid = $getVars['authorid'];
         $contentModel->content = $getVars['content'];
         $contentModel->date = $getVars['date'];
         
