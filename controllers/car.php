@@ -20,7 +20,7 @@ class Car_Controller {
         $carModel->notes = $getVars['notes'];
         $carModel->color = $getVars['color'];
         $carModel->cartype = $getVars['cartype'];
-        $carModel->dateadded = strtotime(time());
+        $carModel->dateadded = $getVars['dateadded'];
         $carModel->featured = $getVars['featured'];
         $carModel->save();
         return $carModel->id;
@@ -42,41 +42,38 @@ class Car_Controller {
         $carModel->enginesize = $getVars['enginesize'];
         $carModel->mileage = $getVars['mileage'];
         $carModel->notes = $getVars['notes'];
-      
+        $carModel->dateadded = $getVars['dateadded'];
         $carModel->featured = $getVars['featured'];
-$carModel->color = $getVars['color'];
+        $carModel->color = $getVars['color'];
         $carModel->cartype = $getVars['cartype'];
         $carModel->id = $getVars['id'];
         return $carModel->save();
     }
 
-    public function delete(array $getVars){
+    public function delete(array $getVars) {
         $carModel = new Car_Model();
         $carModel->id = $getVars['id'];
         return $carModel->delete();
-        
     }
-    
-    public function carcount()
-    {
-        $carModel=new Car_Model();
+
+    public function carcount() {
+        $carModel = new Car_Model();
         return $carModel->get_car_count();
     }
-    
-    public function getcarimages($id)
-    {
+
+    public function getcarimages($id) {
         $carimages = Array();
 
-            if ($handle = opendir(SERVER_ROOT . '/uploads/' . $id . '/')) {
-                while (false !== ($entry = readdir($handle))) {
-                    if ($entry != "." && $entry != "..") {
-                        array_push($carimages, $entry);
-                    }
+        if ($handle = opendir(SERVER_ROOT . '/uploads/' . $id . '/')) {
+            while (false !== ($entry = readdir($handle))) {
+                if ($entry != "." && $entry != "..") {
+                    array_push($carimages, $entry);
                 }
             }
-            return $carimages;
+        }
+        return $carimages;
     }
-    
+
     public function main(array $getVars) {
 
         $loggedin = false;
@@ -98,9 +95,8 @@ $carModel->color = $getVars['color'];
         if ($getVars['action'] == 'edit') {
             $this->edit($getVars);
         }
-        
-        if ($getVars['action']=='delete')
-        {
+
+        if ($getVars['action'] == 'delete') {
             $this->delete($getVars);
         }
 
@@ -136,11 +132,11 @@ $carModel->color = $getVars['color'];
             $detailsview->assign('carmileage', $carmodel->mileage);
             $detailsview->assign('carnotes', $carmodel->notes);
             $detailsview->assign('cardateadded', $carmodel->dateadded);
-              $detailsview->assign('color', $carmodel->color);
-                $detailsview->assign('featured', $carmodel->featured);
-                  $detailsview->assign('cartype', $carmodel->cartype);
+            $detailsview->assign('color', $carmodel->color);
+            $detailsview->assign('featured', $carmodel->featured);
+            $detailsview->assign('cartype', $carmodel->cartype);
 
-            
+
             $detailsview->assign('carimages', $this->getcarimages($id));
 
 
@@ -161,6 +157,10 @@ $carModel->color = $getVars['color'];
             $editform->assign('notestoedit', $carModel->notes);
             $editform->assign('dateaddedtoedit', $carModel->dateadded);
             $editform->assign('featuredtoedit', $carModel->featured);
+            $editform->assign('colortoedit', $carmodel->color);
+            $editform->assign('featuredtoedit', $carmodel->featured);
+            $editform->assign('cartypetoedit', $carmodel->cartype);
+
             $editimagesform = new View_Model('/editforms/editcarimages');
             $editimagesform->assign('idtoedit', $carmodel->id);
 
