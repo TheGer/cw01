@@ -5,6 +5,9 @@
 <p>Mileage: <?= $data['carmileage']; ?></p>
 <p>Notes: <?= $data['carnotes']; ?></p>
 <p>Date Added: <?= $data['cardateadded']; ?></p>
+<p>Featured: <?=$data['featured']; ?></p>
+<p>Color: <?=$data['color']; ?></p>
+<p>Car type: <?=$data['cartype'];?></p>
 <fieldset>Images:
     <ul class="block-grid three-up" data-clearing>
         <?php

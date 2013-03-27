@@ -1,4 +1,5 @@
 <?php
+
 define('SERVER_ROOT', 'c:\xampp\htdocs\cw01');
 define('MYACTIVERECORD_CONNECTION_STR', 'mysql://root@localhost/coursework');
 
@@ -33,27 +34,39 @@ class Car_ControllerTest extends PHPUnit_Framework_TestCase {
         
     }
 
-    
     //if there are three cars in DB test that the count is accurate
-    public function testCarCount(){
-        $this->assertEquals(2,$this->object->carcount()); 
+    public function testCarCount() {
+        $this->assertEquals(2, $this->object->carcount());
     }
-   
-    
+
     //tests deleting a car with ID 2
-    public function testDelete()
-    {
+    public function testDelete() {
         $simulatedGetVars = Array();
         $simulatedGetVars['id'] = 2;
         $this->object->delete($simulatedGetVars);
-        $this->assertEquals(2,$this->object->carcount());
+        $this->assertEquals(2, $this->object->carcount());
     }
-    
-    
-    public function testGetCarImages()
-    {
+
+    public function testUpdate() {
+        $simulatedGetVars = Array();
+        $simulatedGetVars['id'] = 3;
+        $simulatedGetVars['name'] = "IsuzuUpdated";
+        $simulatedGetVars['model'] = "GeminiUpdated";
+        $simulatedGetVars['enginesize'] = 1501;
+        $simulatedGetVars['mileage'] = 20;
+        $simulatedGetVars['notes'] = "Notes updated";
+        $simulatedGetVars['dateadded'] = strtotime(time());
+        $simulatedGetVars['featured'] = 1;
+        $simulatedGetVars['color'] = "Red";
+        $simulatedGetVars['cartype'] = "saloon";
+
+        $this->assertTrue($this->object->edit($simulatedGetVars));
+    }
+
+    //should return two images in the folder corresponding with the car id
+    public function testGetCarImages() {
         $numberofimages = count($this->object->getcarimages(1));
-         $this->assertEquals(2,$numberofimages);
+        $this->assertEquals(2, $numberofimages);
     }
-    
+
 }

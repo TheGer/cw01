@@ -449,7 +449,7 @@ class MyActiveRecord
 		{
 			$val = stripslashes($val);
 		}
-		return("'".mysql_escape_string($val)."'");
+		return("'".mysql_real_escape_string($val)."'");
 	}
 		
 	/**

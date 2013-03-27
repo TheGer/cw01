@@ -19,7 +19,7 @@ class Car_Controller {
         $carModel->mileage = $getVars['mileage'];
         $carModel->notes = $getVars['notes'];
         $carModel->color = $getVars['color'];
-        $carModel->type = $getVars['type'];
+        $carModel->cartype = $getVars['cartype'];
         $carModel->dateadded = $getVars['dateadded'];
         $carModel->featured = $getVars['featured'];
         $carModel->save();
@@ -45,7 +45,7 @@ class Car_Controller {
         $carModel->dateadded = $getVars['dateadded'];
         $carModel->featured = $getVars['featured'];
 $carModel->color = $getVars['color'];
-        $carModel->type = $getVars['type'];
+        $carModel->cartype = $getVars['cartype'];
         $carModel->id = $getVars['id'];
         return $carModel->save();
     }
@@ -136,6 +136,9 @@ $carModel->color = $getVars['color'];
             $detailsview->assign('carmileage', $carmodel->mileage);
             $detailsview->assign('carnotes', $carmodel->notes);
             $detailsview->assign('cardateadded', $carmodel->dateadded);
+              $detailsview->assign('color', $carmodel->color);
+                $detailsview->assign('featured', $carmodel->featured);
+                  $detailsview->assign('cartype', $carmodel->cartype);
 
             
             $detailsview->assign('carimages', $this->getcarimages($id));
