@@ -20,7 +20,7 @@ class Car_Controller {
         $carModel->notes = $getVars['notes'];
         $carModel->color = $getVars['color'];
         $carModel->cartype = $getVars['cartype'];
-        $carModel->dateadded = $getVars['dateadded'];
+        $carModel->dateadded = strtotime(time());
         $carModel->featured = $getVars['featured'];
         $carModel->save();
         return $carModel->id;
@@ -42,7 +42,7 @@ class Car_Controller {
         $carModel->enginesize = $getVars['enginesize'];
         $carModel->mileage = $getVars['mileage'];
         $carModel->notes = $getVars['notes'];
-        $carModel->dateadded = $getVars['dateadded'];
+      
         $carModel->featured = $getVars['featured'];
 $carModel->color = $getVars['color'];
         $carModel->cartype = $getVars['cartype'];
