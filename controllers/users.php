@@ -10,10 +10,16 @@ class Users_Controller {
     //template
     public $template = 'displayuser';
 
+    
+    public function count()
+    {
+        $userModel = new Users_Model();
+        return $userModel->get_user_count();
+    }
     //function to add content
     public function add(array $getVars) {
         $userModel = new Users_Model();
-        $userModel->id = $getVars['id'];
+      
         $userModel->username = $getVars['username'];
         $userModel->password = $getVars['password'];
         $userModel->firstname = $getVars['firstname'];
@@ -88,10 +94,12 @@ class Users_Controller {
 
         if (($getVars['action'] == 'showedit') && ($loggedin)) {
             $id = $getVars['id'];
-            //  echo $id;
+              //echo "test".$id;
             $userModel = array_shift($userModel->get_user_by_id($id));
             $editform = new View_Model('editforms/edituser');
             $editform->assign('idtoedit', $userModel->id);
+            $editform->assign('usernametoedit', $userModel->username);
+            
             $editform->assign('passwordtoedit', $userModel->password);
             $editform->assign('firstnametoedit', $userModel->firstname);
             $editform->assign('secondnametoedit', $userModel->secondname);

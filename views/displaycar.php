@@ -56,7 +56,14 @@
             <?php
             if (isset($data['detailsview'])) {
                 echo $data['detailsview'];
-            } else {
+            }
+            else if(isset($data['editview'])){
+                echo $data['detailsview'];
+            }
+            else if (isset($data['addview'])){
+                echo $data['addview'];
+            }
+            else {
                 ?>
                 <!-- table with all the cars as well as a link to the details page --> 
                 <div class="two columns">

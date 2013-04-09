@@ -7,7 +7,7 @@
 
 <div class="twelve columns">
     <span></span>
-    
+
     <form id="adduser" method="get" action="<?= SITE_ROOT ?>">
         <input type="hidden" name="page" value="users"/>
         <input type="hidden" name="action" value="add"/>
@@ -15,12 +15,12 @@
         <input type="text" name="username" />
         <label class="left inline">Name:</label> 
         <input type="text" name="firstname" />
-         <label class="left inline">Surname:</label> 
+        <label class="left inline">Surname:</label> 
         <input type="text" name="secondname" />
         <label class="left inline">Address:</label> 
         <input type="text" name="address" />
         <label class="left inline">Password:</label> 
-        <input type="text" name="pword1" id="password1" />
+        <input type="text" name="password" id="password1" />
         <label class="left inline">Confirm Password:</label> 
         <input type="text" name="pword2" id="password2" />
         <!-- to do add user types -->
@@ -33,13 +33,27 @@
     </form>
 </div>
 <script>
-$(document).ready(function(){
+    $(document).ready(function() {
 
-$("#adduser").submit(function(){
-    //implement validation here
-    return true;
-});
-    
-});
-        
+        $("#adduser").submit(function() {
+            //implement validation here
+            var pass1 = $("#password1").val();
+            var pass2 = $("#password2").val();
+
+            if (pass1 != '' && pass1 != pass2) {
+                //show error
+                var error = 'Password confirmation doesn\'t match.';
+                $('#password1').next('span').text(error);
+                $('#password2').next('span').text(error);
+                //           errorCount = errorCount + 1;
+                return false
+            }
+            else
+            {
+                return true;
+            }
+        });
+
+    });
+
 </script>

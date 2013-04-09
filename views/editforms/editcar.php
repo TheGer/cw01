@@ -31,7 +31,7 @@
     
     
     <label class="left inline">Notes:</label> 
-    <textarea name="notes" class="error">value="<?= $data['notestoedit'] ?>"</textarea>
+    <textarea name="notes" class="error"><?= $data['notestoedit'] ?>"</textarea>
     <small class="error">Missing notes</small>
     <label for="checkbox1">  
         <?php if ($data['featurestoedit'] == 0) { ?>

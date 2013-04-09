@@ -45,6 +45,13 @@ class Content_Controller {
         $contentModel->id = $getVars['id'];
         return $contentModel->save();
     }
+    
+    
+    public function articlecount(){
+        $contentModel = new Content_Model();
+        return $contentModel->get_article_count();
+        
+    }
 
     public function main(array $getVars) {
 

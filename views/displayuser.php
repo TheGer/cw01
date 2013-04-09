@@ -63,6 +63,11 @@
                 if (isset($data['addform'])) {
                     echo $data['addform'];
                 }
+                
+                //display edit user form.
+                if (isset($data['editform'])) {
+                    echo $data['editform'];
+                }
 
                 //display list of users
                 if (isset($data['users'])) {
