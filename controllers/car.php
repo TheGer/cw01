@@ -139,19 +139,40 @@ class Car_Controller {
         }
 
         if ($getVars['action'] == 'search') {
+            
             //display search results
-            $carModel->name = $getVars['name'];
-            $carModel->model = $getVars['model'];
-            $carModel->enginesize = $getVars['enginesize'];
-            $carModel->mileage = $getVars['mileage'];
-            $carModel->notes = $getVars['notes'];
-            $carModel->dateadded = $getVars['dateadded'];
-            $carModel->featured = $getVars['featured'];
-            $carModel->color = $getVars['color'];
-            $carModel->cartype = $getVars['cartype'];
+            $carModel->name = $getVars['searchname'];
+            $carModel->model = $getVars['searchmodel'];
+            $carModel->enginesize = $getVars['searchenginesize'];
+            $carModel->mileage = $getVars['searchmileage'];
+            $carModel->notes = $getVars['searchnotes'];
+            $carModel->dateadded = $getVars['searchdateadded'];
+            $carModel->featured = $getVars['searchfeatured'];
+            $carModel->color = $getVars['searchcolor'];
+            $carModel->cartype = $getVars['searchcartype'];
 
-            $master = new View_Model($this->template);
-            $master->assign('carslist', $carModel->FindAll($carModel));
+            //$master = new View_Model($this->template);
+            
+            
+            $searchstring ="";
+            foreach ($carModel as $key=>$value)
+            {
+                if ($value != "")
+                {
+                    if ($searchstring=="")
+                    {
+                    $searchstring = $searchstring."$key='$value'";
+                    }
+                    else
+                    {
+                     $searchstring = $searchstring." AND $key='$value'";    
+                    }
+                }
+            }
+            
+        //    echo $searchstring;
+            
+            $master->assign('carslist', $carModel->FindAll("car_model",$searchstring));
         }
 
 
