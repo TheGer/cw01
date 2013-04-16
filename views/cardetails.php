@@ -4,7 +4,7 @@
 <p>Engine Size: <?= $data['carenginesize']; ?></p>
 <p>Mileage: <?= $data['carmileage']; ?></p>
 <p>Notes: <?= $data['carnotes']; ?></p>
-<p>Date Added: <?= $data['cardateadded']; ?></p>
+<p>Date Added: <?= date('Y-m-d',$data['cardateadded']); ?></p>
 <p>Featured: <?=$data['featured']; ?></p>
 <p>Color: <?=$data['color']; ?></p>
 <p>Car type: <?=$data['cartype'];?></p>

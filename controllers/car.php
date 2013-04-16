@@ -122,7 +122,8 @@ class Car_Controller {
         if ($getVars['action'] == 'confirmviewing') {
             $viewingmodel = new Viewing_Model();
             $viewingmodel->carid = $getVars['carid'];
-            $viewingmodel->dateofviewing = $getVars['date'];
+            $viewingmodel->dateofviewing = mktime($getVars['viewingdate']);
+            //echo mktime($getVars['viewingdate']);
             $viewingmodel->save();
         }
 
@@ -134,7 +135,7 @@ class Car_Controller {
             $bookviewingview->assign('id',$id);
             $carmodel = array_shift($carModel->get_car($id));
             $bookviewingview->assign('name',$carmodel->name);
-               $bookviewingview->assign('name',$carmodel->model);
+               $bookviewingview->assign('model',$carmodel->model);
             $master->assign('bookingform',$bookviewingview->render(FALSE));
             
         }

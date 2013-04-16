@@ -99,7 +99,7 @@
                                     <td><?= $car->model ?></td>
                                     <td><?= $car->mileage ?></td>
                                     <td><?= $car->enginesize ?></td>
-                                    <td><?= $car->dateadded ?></td>
+                                    <td><?= date('Y-m-d',$car->dateadded) ?></td>
                                     <td><a href="<?= SITE_ROOT ?>/index.php?page=car&action=showdetails&id=<?= $car->id ?>">View details</a></td>
                                 </tr>
         <?php
