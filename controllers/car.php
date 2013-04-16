@@ -118,6 +118,26 @@ class Car_Controller {
             $master->assign('navigation', $loggedinnav->render(FALSE));
         }
 
+
+        if ($getVars['action'] == 'confirmviewing') {
+            $viewingmodel = new Viewing_Model();
+            $viewingmodel->carid = $getVars['carid'];
+            $viewingmodel->dateofviewing = $getVars['date'];
+            $viewingmodel->save();
+        }
+
+
+        if ($getVars['action'] == 'bookviewing') {
+
+            $id = $getVars['id'];
+            $bookviewingview = new View_Model('/addforms/addviewing');
+            $bookviewingview->assign('id',$id);
+            $carmodel = array_shift($carModel->get_car($id));
+            $bookviewingview->assign('name',$carmodel->name);
+            $master->assign('bookingform',$bookviewingview);
+            
+        }
+
         if ($getVars['action'] == 'search') {
             //display search results
             $carModel->name = $getVars['name'];

@@ -12,8 +12,6 @@
         <p>Car name: <?= $data['name'] ?></p>
         <label class="left inline">Date to view:</label> 
         <input type="text" id="dpicker" name="viewingdate" />
-        <label class="left inline">Notes:</label> 
-        <textarea name="notes"></textarea>
-        <input type="submit" class="success button" value="Add new car"> 
+        <input type="submit" class="success button" value="Book viewing"> 
     </form>
 </div>

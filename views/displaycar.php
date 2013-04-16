@@ -59,7 +59,10 @@
             }
             else if(isset($data['searchform'])){
                  echo $data['searchform'];
-            }        
+            } 
+            else if(isset($data['bookingform'])){
+                 echo $data['bookingform'];
+            }
             else if(isset($data['editview'])){
                 echo $data['detailsview'];
             }
