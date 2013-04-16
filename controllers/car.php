@@ -113,6 +113,8 @@ class Car_Controller {
         } else {
             $master = new View_Model('displaycarloggedin');
             $master->assign('carslist', $carModel->get_cars_default());
+            
+           // $master->assign('numberofviews',get_viewing_count_by_car($carid));
             $loggedinnav = new View_Model('loggedinnavigation');
             $loggedinnav->assign('articleslist', $contentModel->get_articles());
             $master->assign('navigation', $loggedinnav->render(FALSE));

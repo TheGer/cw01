@@ -48,6 +48,10 @@ class Car_Model extends MyActiveRecord {
         return $this->Count($this);
     }
 
+    public function get_viewing_count()
+    {
+        return $this->Count("viewing_model", "carid=$this->id");
+    }
     
 }
 
