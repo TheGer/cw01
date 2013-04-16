@@ -8,6 +8,7 @@
 <p>Featured: <?=$data['featured']; ?></p>
 <p>Color: <?=$data['color']; ?></p>
 <p>Car type: <?=$data['cartype'];?></p>
+<p><a href="<?= SITE_ROOT ?>/index.php?page=car&action=bookviewing&id=<?=$data['id'];?>">book viewing</a></p>
 <fieldset>Images:
     <ul class="block-grid three-up" data-clearing>
         <?php

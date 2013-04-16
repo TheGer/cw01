@@ -4,6 +4,19 @@
  * and open the template in the editor.
  */
 ?>
+<script>
+    
+$(document).ready(function(){
+    $("#dpicker").datepicker(); 
+
+$("#addcar").submit(function(){
+    //implement validation here
+    return true;
+});
+    
+});
+        
+</script>
 <form method="get" action="<?= SITE_ROOT ?>">
     <input type="hidden" name="page" value="content"/>
     <input type="hidden" name="action" value="edit"/>

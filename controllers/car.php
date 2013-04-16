@@ -134,7 +134,8 @@ class Car_Controller {
             $bookviewingview->assign('id',$id);
             $carmodel = array_shift($carModel->get_car($id));
             $bookviewingview->assign('name',$carmodel->name);
-            $master->assign('bookingform',$bookviewingview);
+               $bookviewingview->assign('name',$carmodel->model);
+            $master->assign('bookingform',$bookviewingview->render(FALSE));
             
         }
 
