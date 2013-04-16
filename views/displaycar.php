@@ -57,6 +57,9 @@
             if (isset($data['detailsview'])) {
                 echo $data['detailsview'];
             }
+            else if(isset($data['searchform'])){
+                 echo $data['searchform'];
+            }        
             else if(isset($data['editview'])){
                 echo $data['detailsview'];
             }

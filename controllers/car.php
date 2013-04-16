@@ -118,6 +118,22 @@ class Car_Controller {
             $master->assign('navigation', $loggedinnav->render(FALSE));
         }
 
+        if ($getVars['action'] == 'search') {
+            //display search results
+            $carModel->name = $getVars['name'];
+            $carModel->model = $getVars['model'];
+            $carModel->enginesize = $getVars['enginesize'];
+            $carModel->mileage = $getVars['mileage'];
+            $carModel->notes = $getVars['notes'];
+            $carModel->dateadded = $getVars['dateadded'];
+            $carModel->featured = $getVars['featured'];
+            $carModel->color = $getVars['color'];
+            $carModel->cartype = $getVars['cartype'];
+
+            $master = new View_Model($this->template);
+            $master->assign('carslist', $carModel->FindAll($carModel));
+        }
+
 
         if ($getVars['action'] == 'showdetails') {
             $id = $getVars['id'];
@@ -142,6 +158,14 @@ class Car_Controller {
 
             $master->assign('detailsview', $detailsview->render(FALSE));
         }
+
+
+        if ($getVars['action'] == 'showsearch') {
+
+            $searchform = new View_Model('searchform');
+            $master->assign('searchform', $searchform->render(FALSE));
+        }
+
 
         if (($getVars['action'] == 'showedit') && ($loggedin)) {
 
