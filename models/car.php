@@ -38,6 +38,8 @@ class Car_Model extends MyActiveRecord {
         $sql = "select * from car_model";
         return $this->FindBySql($this, $sql);
     }
+    
+   
 
     public function get_featured_cars() {
         return $this->FindBySql($this, "select * from car_model where featured = true");

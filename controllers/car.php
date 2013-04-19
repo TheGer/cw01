@@ -210,13 +210,27 @@ class Car_Controller {
             $searchform = new View_Model('searchform');
             $master->assign('searchform', $searchform->render(FALSE));
         }
-
+        
+        
+        
+        if (($getVars['action'] == 'listviewings') && ($loggedin)){
+            //list viewings page
+          //  echo "test";
+            $id = $getVars['id'];
+            
+            $listviewingform = new View_Model('listviewings');
+            $viewingmodel = new Viewing_Model();
+            $listviewingform->assign('viewinglist',$viewingmodel->get_viewings_by_car($id));
+            
+            // echo $id;
+           // $carModel = array_shift($carModel->get_article($id));
+        }
 
         if (($getVars['action'] == 'showedit') && ($loggedin)) {
 
             $id = $getVars['id'];
             // echo $id;
-            $carModel = array_shift($carModel->get_article($id));
+            $carModel = array_shift($carModel->get_car($id));
             $editform = new View_Model('/editforms/editcar');
             $editform->assign('idtoedit', $carModel->id);
             $editform->assign('nametoedit', $carModel->name);
