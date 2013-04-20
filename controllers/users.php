@@ -63,11 +63,14 @@ class Users_Controller {
         if ($_SESSION['usertype']<4) {
             $admin = true;
         }
+        
+        //for the top navigation menu
         $contentModel = new Content_Model;
+        
+        //user class
         $userModel = new Users_Model;
 
         if (($getVars['action'] == 'add')) {
-            //     echo 'add';
             //this handles both add and register
             $this->add($getVars);
         }
@@ -96,9 +99,27 @@ class Users_Controller {
 
 
         $master = new View_Model($this->template);
-        //assign article data to view
+        
 
-        if (($getVars['action'] == 'showedit') && ($loggedin)) {
+        if (($getVars['action'] == 'showedit') && ($loggedin) && (!$admin)) {
+            $id = $getVars['id'];
+              //echo "test".$id;
+            $userModel = array_shift($userModel->get_user_by_id($id));
+            $editform = new View_Model('editforms/editprofile');
+            $editform->assign('idtoedit', $userModel->id);
+            $editform->assign('usernametoedit', $userModel->username);
+            
+            $editform->assign('passwordtoedit', $userModel->password);
+            $editform->assign('firstnametoedit', $userModel->firstname);
+            $editform->assign('secondnametoedit', $userModel->secondname);
+            $editform->assign('addresstoedit', $userModel->address);
+         
+
+            $master->assign('editform', $editform->render(FALSE));
+        }
+        
+        
+        if (($getVars['action'] == 'showedit') && ($loggedin) && ($admin)) {
             $id = $getVars['id'];
               //echo "test".$id;
             $userModel = array_shift($userModel->get_user_by_id($id));
@@ -125,8 +146,7 @@ class Users_Controller {
             $master->assign('addform', $registerform->render(FALSE));
         }
 
-        //to do here: show list of users because this is the default page for the users
-
+       
         $loginform = new View_Model('login');
 
         if (!$loggedin) {
@@ -141,7 +161,19 @@ class Users_Controller {
             $loggedinnav = new View_Model('loggedinnavigation');
             $loggedinnav->assign('articleslist', $contentModel->get_articles());
             $master->assign('navigation', $loggedinnav->render(FALSE));
-            $master->assign('profile', $userModel->get_user_by_id($_SESSION['userid']));
+            
+            $profile = new View_Model('profile');
+        
+            $currentUser = new Users_Model();
+            
+            $currentUser = array_shift($userModel->get_user_by_id($_SESSION['userid']));
+            
+            $profile->assign('firstname',$currentUser->firstname);
+            $profile->assign('secondname',$currentUser->secondname);
+            $profile->assign('address',$currentUser->address);
+            $profile->assign('id',$currentUser->id);
+            
+            $master->assign('profile',$profile->render(FALSE));
         }
         
         
