@@ -12,7 +12,7 @@
             ?>
             <li><a href="index.php?page=content">content</a></li>
             <li><a href="index.php?page=car">cars</a></li>
-            <li><a href="index.php?page=users">profile</a></li>
+            <li><a href="index.php?page=users">users</a></li>
             <li><a href="index.php?page=users&action=logout">logout</a></li>
 
         </ul>

@@ -12,6 +12,7 @@ class Viewing_Model extends MyActiveRecord {
     public $userid;
     public $carid;
     public $dateofviewing;
+    public $clientname;
 
 
     public function get_viewing($id) {

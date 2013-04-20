@@ -18,7 +18,7 @@ class Viewing_Controller
         $viewingModel->userid = $getVars['userid'];
         $viewingModel->carid = $getVars['carid'];
         $viewingModel->dateofviewing = $getVars['dateofviewing'];
-        
+        $viewingModel->clientname=$getVars['clientname'];
         
         return $viewingModel->save();
         

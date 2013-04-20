@@ -8,7 +8,7 @@
 class Car_Controller {
 
     //template
-    public $template = 'displaycar';
+    public $template = 'listcars';
 
     //function to add car
     public function add(array $getVars) {
@@ -77,9 +77,16 @@ class Car_Controller {
     public function main(array $getVars) {
 
         $loggedin = false;
+        $admin = false;
         if (isset($_SESSION['username'])) {
             $loggedin = true;
         }
+        
+        
+        if ($_SESSION['usertype']<4) {
+            $admin = true;
+        }
+        
         $carModel = new Car_Model;
         $contentModel = new Content_Model;
 
@@ -105,17 +112,29 @@ class Car_Controller {
 
 
         if (!$loggedin) {
-            $master = new View_Model($this->template);
+            $master = new View_Model('listcars');
             $master->assign('carslist', $carModel->get_cars_default());
             $navigation = new View_Model('navigation');
             $navigation->assign('articleslist', $contentModel->get_articles());
             $master->assign('navigation', $navigation->render(FALSE));
-        } else {
-            $master = new View_Model('displaycarloggedin');
+        } 
+        
+        if ($loggedin) {
+            $master = new View_Model('listcars');
             $master->assign('carslist', $carModel->get_cars_default());
             
            // $master->assign('numberofviews',get_viewing_count_by_car($carid));
             $loggedinnav = new View_Model('loggedinnavigation');
+            $loggedinnav->assign('articleslist', $contentModel->get_articles());
+            $master->assign('navigation', $loggedinnav->render(FALSE));
+        }
+        
+        if (($loggedin) && ($admin)) {
+            $master = new View_Model('listcarsloggedin');
+            $master->assign('carslist', $carModel->get_cars_default());
+            
+           // $master->assign('numberofviews',get_viewing_count_by_car($carid));
+            $loggedinnav = new View_Model('adminnavigation');
             $loggedinnav->assign('articleslist', $contentModel->get_articles());
             $master->assign('navigation', $loggedinnav->render(FALSE));
         }
@@ -212,8 +231,33 @@ class Car_Controller {
         }
         
         
+         if (($getVars['action'] == 'showdetails') && ($loggedin)) {
+            $id = $getVars['id'];
+
+            $detailsview = new View_Model('cardetailsloggedin');
+
+            $carmodel = array_shift($carModel->get_car($id));
+            $detailsview->assign('id', $carmodel->id);
+            $detailsview->assign('carname', $carmodel->name);
+            $detailsview->assign('carmodel', $carmodel->model);
+            $detailsview->assign('carenginesize', $carmodel->enginesize);
+            $detailsview->assign('carmileage', $carmodel->mileage);
+            $detailsview->assign('carnotes', $carmodel->notes);
+            $detailsview->assign('cardateadded', $carmodel->dateadded);
+            $detailsview->assign('color', $carmodel->color);
+            $detailsview->assign('featured', $carmodel->featured);
+            $detailsview->assign('cartype', $carmodel->cartype);
+
+
+            $detailsview->assign('carimages', $this->getcarimages($id));
+
+
+            $master->assign('detailsview', $detailsview->render(FALSE));
+        }
         
-        if (($getVars['action'] == 'listviewings') && ($loggedin)){
+        
+        
+        if (($getVars['action'] == 'listviewings') && ($loggedin)  && ($admin)){
             //list viewings page
           //  echo "test";
             $id = $getVars['id'];
@@ -226,7 +270,7 @@ class Car_Controller {
            // $carModel = array_shift($carModel->get_article($id));
         }
 
-        if (($getVars['action'] == 'showedit') && ($loggedin)) {
+        if (($getVars['action'] == 'showedit') && ($loggedin) && ($admin)) {
 
             $id = $getVars['id'];
             // echo $id;
@@ -251,7 +295,7 @@ class Car_Controller {
             $master->assign('editimagesform', $editimagesform->render(FALSE));
         }
 
-        if (($getVars['action'] == 'showadd') && ($loggedin)) {
+        if (($getVars['action'] == 'showadd') && ($loggedin) && ($admin)) {
             $addform = new View_Model('/addforms/addcar');
             $master->assign('addform', $addform->render(FALSE));
         }

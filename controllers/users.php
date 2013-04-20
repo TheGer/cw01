@@ -8,7 +8,7 @@
 class Users_Controller {
 
     //template
-    public $template = 'displayuser';
+    public $template = 'listusers';
 
     
     public function count()
@@ -21,7 +21,7 @@ class Users_Controller {
         $userModel = new Users_Model();
       
         $userModel->username = $getVars['username'];
-        $userModel->password = $getVars['password'];
+        $userModel->password = md5($getVars['password']);
         $userModel->firstname = $getVars['firstname'];
         $userModel->secondname = $getVars['secondname'];
         $userModel->address = $getVars['address'];
@@ -42,7 +42,7 @@ class Users_Controller {
         $userModel = new Users_Model();
 
         $userModel->username = $getVars['username'];
-        $userModel->password = $getVars['password'];
+        $userModel->password = md5($getVars['password']);
         $userModel->firstname = $getVars['firstname'];
         $userModel->secondname = $getVars['secondname'];
         $userModel->address = $getVars['address'];
@@ -60,8 +60,9 @@ class Users_Controller {
         $contentModel = new Content_Model;
         $userModel = new Users_Model;
 
-        if (($getVars['action'] == 'add') && ($loggedin)) {
+        if (($getVars['action'] == 'add')) {
             //     echo 'add';
+            //this handles both add and register
             $this->add($getVars);
         }
 
@@ -141,11 +142,7 @@ class Users_Controller {
 
 
 
-        //if the edit link was pressed
-        //show the page
         $master->render();
-        //$view->assign('title' , $article['title']);
-        //$view->assign('content' , $article['content']);
     }
 
 }

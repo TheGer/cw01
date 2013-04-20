@@ -20,9 +20,9 @@
         <label class="left inline">Address:</label> 
         <input type="text" name="address" />
         <label class="left inline">Password:</label> 
-        <input type="text" name="password" id="password1" />
+        <input type="password" name="password" id="password1" />
         <label class="left inline">Confirm Password:</label> 
-        <input type="text" name="pword2" id="password2" />
+        <input type="password" name="pword2" id="password2" />
         <!-- to do add user types -->
         <select name="type">
             <option value="1">DMS</option>

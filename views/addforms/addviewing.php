@@ -27,6 +27,8 @@ $("#addcar").submit(function(){
         <p>Car model: <?= $data['model'] ?></p>
         <br/>
         <br/>
+        <label class="left inline">Enter name and surname:</label> 
+        <input type="text" id="name" name="clientname" />
         <label class="left inline">Date to view:</label> 
         <input type="text" id="dpicker" name="viewingdate" />
         <input type="submit" class="success button" value="Book viewing"> 

@@ -44,6 +44,7 @@ function login($username,$password)
     {
         //returns true if the query is found
         $_SESSION['userid'] = $row['id'];
+        $_SESSION['usertype'] = $row['type'];
         return true;
     }
     else {
@@ -70,6 +71,7 @@ if (isset($_GET["loginusername"]))
     else
     {
         $_SESSION['username'] = $uname;
+        
       //  $loggedin=TRUE;
        // echo $_SESSION['username'];
         //  header("Location".SITE_ROOT);
