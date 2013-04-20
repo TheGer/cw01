@@ -68,6 +68,13 @@
                 if (isset($data['editform'])) {
                     echo $data['editform'];
                 }
+                
+                
+                if (isset($data['profile']))
+                {
+                    echo $data['profile'];
+                }
+                
 
                 //display list of users
                 if (isset($data['users'])) {

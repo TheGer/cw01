@@ -56,8 +56,14 @@ class Content_Controller {
     public function main(array $getVars) {
 
         $loggedin = false;
+        $admin = false;
         if (isset($_SESSION['username'])) {
             $loggedin = true;
+        }
+        
+        
+        if ($_SESSION['usertype']<4) {
+            $admin = true;
         }
 
         $contentModel = new Content_Model;

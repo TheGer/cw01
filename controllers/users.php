@@ -54,8 +54,14 @@ class Users_Controller {
     public function main(array $getVars) {
 
         $loggedin = false;
+        $admin = false;
         if (isset($_SESSION['username'])) {
             $loggedin = true;
+        }
+        
+        
+        if ($_SESSION['usertype']<4) {
+            $admin = true;
         }
         $contentModel = new Content_Model;
         $userModel = new Users_Model;
@@ -72,7 +78,6 @@ class Users_Controller {
         if (($getVars['action'] == 'delete') && ($loggedin)) {
             $this->delete($getVars);
         }
-
 
         if ($getVars['action'] == 'logout') {
 
@@ -110,7 +115,7 @@ class Users_Controller {
             $master->assign('editform', $editform->render(FALSE));
         }
 
-        if (($getVars['action'] == 'showadd') && ($loggedin)) {
+        if (($getVars['action'] == 'showadd') && ($loggedin) && ($admin)) {
             $addform = new View_Model('addforms/adduser');
             $master->assign('addform', $addform->render(FALSE));
         }
@@ -130,8 +135,19 @@ class Users_Controller {
             if (!isset($getVars['action'])) {
                 $master->assign('loginform', $loginform->render(FALSE));
             }
-        } else {
+        } 
+        
+        if (($loggedin) && (!$admin)) {
             $loggedinnav = new View_Model('loggedinnavigation');
+            $loggedinnav->assign('articleslist', $contentModel->get_articles());
+            $master->assign('navigation', $loggedinnav->render(FALSE));
+            $master->assign('profile', $userModel->get_user_by_id($_SESSION['userid']));
+        }
+        
+        
+        
+        if (($loggedin) && ($admin)) {
+            $loggedinnav = new View_Model('adminnavigation');
             $loggedinnav->assign('articleslist', $contentModel->get_articles());
             $master->assign('navigation', $loggedinnav->render(FALSE));
             $master->assign('users', $userModel->get_users());
