@@ -66,7 +66,9 @@
                 echo $data['editimagesform'];
             }
 
-
+if (isset($data['listviewings'])){
+                echo $data['listviewings'];
+            }
             if (isset($data['detailsview'])) {
                 echo $data['detailsview'];
             } else {

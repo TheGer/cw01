@@ -69,6 +69,7 @@
             else if (isset($data['addview'])){
                 echo $data['addview'];
             }
+            
             else {
                 ?>
                 <!-- table with all the cars as well as a link to the details page --> 

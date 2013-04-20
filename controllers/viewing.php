@@ -46,6 +46,13 @@ class Viewing_Controller
         return $viewingModel->delete();
         
     }
+    
+    
+    public function getviewingsbyuser($id)
+    {
+         return $this->FindBySql($this, "select * from viewing_model where id=$id");
+    }
+    
             
     
     public function main(array $getVars)

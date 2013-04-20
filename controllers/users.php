@@ -157,6 +157,23 @@ class Users_Controller {
             }
         } 
         
+        
+         if ($getVars['action'] == 'editviewings') {
+             
+             
+             
+            $listviewings = new View_Model('listviewings');
+            
+            $viewingmodel = new Viewing_Model();
+            
+            $listviewings->assign('viewinglist',$viewingmodel->getviewingsbyuser($_SESSION['userid'])); 
+             
+            $master->assign('viewingslist', $listviewings->render(FALSE));
+        }
+        
+        
+        
+        
         if (($loggedin) && (!$admin)) {
             $loggedinnav = new View_Model('loggedinnavigation');
             $loggedinnav->assign('articleslist', $contentModel->get_articles());

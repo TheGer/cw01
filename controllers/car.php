@@ -142,6 +142,7 @@ class Car_Controller {
 
         if ($getVars['action'] == 'confirmviewing') {
             $viewingmodel = new Viewing_Model();
+            $viewingModel->userid = $_SESSION['userid'];
             $viewingmodel->carid = $getVars['carid'];
             $viewingmodel->dateofviewing = mktime($getVars['viewingdate']);
             //echo mktime($getVars['viewingdate']);
@@ -265,7 +266,7 @@ class Car_Controller {
             $listviewingform = new View_Model('listviewings');
             $viewingmodel = new Viewing_Model();
             $listviewingform->assign('viewinglist',$viewingmodel->get_viewings_by_car($id));
-            
+            $master->assign('listviewings',$listviewingform->render(FALSE));
             // echo $id;
            // $carModel = array_shift($carModel->get_article($id));
         }

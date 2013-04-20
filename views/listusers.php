@@ -75,6 +75,12 @@
                     echo $data['profile'];
                 }
                 
+                
+                if (isset($data['viewings']))
+                {
+                    echo $data['viewings'];
+                }
+                
 
                 //display list of users
                 if (isset($data['users'])) {
