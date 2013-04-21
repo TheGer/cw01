@@ -164,6 +164,7 @@ class Users_Controller {
             
             $viewingmodel = new Viewing_Model();
             
+            
             $listviewings->assign('viewinglist',$viewingmodel->get_viewings_by_user($_SESSION['userid'])); 
              
             $master->assign('viewingslist', $listviewings->render(FALSE));
