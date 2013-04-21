@@ -144,8 +144,8 @@ class Car_Controller {
             $viewingmodel = new Viewing_Model();
             $viewingmodel->userid = $_SESSION['userid'];
             $viewingmodel->carid = $getVars['carid'];
-            $viewingmodel->dateofviewing = mktime($getVars['viewingdate']);
-            //echo mktime($getVars['viewingdate']);
+            $viewingmodel->dateofviewing = strtotime($getVars['viewingdate']);
+            echo $getVars['viewingdate'];
             $viewingmodel->save();
         }
 

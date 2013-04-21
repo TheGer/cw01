@@ -67,6 +67,13 @@ class Viewing_Controller
         if ($_SESSION['usertype']<4) {
             $admin = true;
         }
+        
+        
+        if (($getVars['action'] == 'delete') && ($loggedin)){
+            $this->delete($getVars);
+            
+        }
+        
     }
     
 }
