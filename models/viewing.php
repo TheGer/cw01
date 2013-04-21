@@ -24,6 +24,12 @@ class Viewing_Model extends MyActiveRecord {
         $sql = $this->Prepare("select * from viewing_model where carid = $carid");
         return $this->FindBySql($this, $sql);
     }
+    
+    
+     public function get_viewings_by_user($userid) {
+        $sql = $this->Prepare("select * from viewing_model where userid = $userid");
+        return $this->FindBySql($this, $sql);
+    }
 
     public function get_viewing_count_by_car($carid) {
         return $this->Count($this, "where carid = $carid");

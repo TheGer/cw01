@@ -160,13 +160,11 @@ class Users_Controller {
         
          if ($getVars['action'] == 'editviewings') {
              
-             
-             
             $listviewings = new View_Model('listviewings');
             
             $viewingmodel = new Viewing_Model();
             
-            $listviewings->assign('viewinglist',$viewingmodel->getviewingsbyuser($_SESSION['userid'])); 
+            $listviewings->assign('viewinglist',$viewingmodel->get_viewings_by_user($_SESSION['userid'])); 
              
             $master->assign('viewingslist', $listviewings->render(FALSE));
         }
