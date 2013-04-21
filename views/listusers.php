@@ -76,9 +76,10 @@
                 }
                 
                 
-                if (isset($data['viewings']))
+                if (isset($data['viewingslist']))
                 {
-                    echo $data['viewings'];
+                    
+                    echo $data['viewingslist'];
                 }
                 
 

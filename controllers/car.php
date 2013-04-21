@@ -142,7 +142,7 @@ class Car_Controller {
 
         if ($getVars['action'] == 'confirmviewing') {
             $viewingmodel = new Viewing_Model();
-            $viewingModel->userid = $_SESSION['userid'];
+            $viewingmodel->userid = $_SESSION['userid'];
             $viewingmodel->carid = $getVars['carid'];
             $viewingmodel->dateofviewing = mktime($getVars['viewingdate']);
             //echo mktime($getVars['viewingdate']);
