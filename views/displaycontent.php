@@ -65,7 +65,7 @@
                     ?>
 
                     <h2><?= $article->title ?></h2>
-                    <?= $article->content ?>
+                    <p><?= $article->content ?></p>
 
                 </div>
                 <?php

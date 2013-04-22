@@ -5,6 +5,7 @@
  */
 ?>
 <div class="twelve columns">
+    <h3>Search for car</h3>
     <form method="get" id="addcar" action="<?= SITE_ROOT ?>">
         <input type="hidden" name="page" value="car"/>
         <input type="hidden" name="action" value="search"/>

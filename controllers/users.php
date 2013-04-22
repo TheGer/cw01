@@ -158,18 +158,7 @@ class Users_Controller {
         } 
         
         
-         if ($getVars['action'] == 'editviewings') {
-             
-            $listviewings = new View_Model('listviewings');
-            
-            $viewingmodel = new Viewing_Model();
-            
-            
-            $listviewings->assign('viewinglist',$viewingmodel->get_viewings_by_user($_SESSION['userid'])); 
-             
-            $master->assign('viewingslist', $listviewings->render(FALSE));
-        }
-        
+      
         
         
         
@@ -190,6 +179,14 @@ class Users_Controller {
             $profile->assign('id',$currentUser->id);
             
             $master->assign('profile',$profile->render(FALSE));
+             $listviewings = new View_Model('listviewings');
+     
+             $viewingmodel = new Viewing_Model();
+            
+            
+            $listviewings->assign('viewinglist',$viewingmodel->get_viewings_by_user($_SESSION['userid'])); 
+             
+            $master->assign('viewingslist', $listviewings->render(FALSE));
         }
         
         

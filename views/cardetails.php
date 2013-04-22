@@ -1,4 +1,5 @@
-
+<h3>Car Details</h3>
+<hr/>
 <p>Name: <?= $data['carname']; ?></p>
 <p>Model: <?= $data['carmodel']; ?></p>
 <p>Engine Size: <?= $data['carenginesize']; ?></p>

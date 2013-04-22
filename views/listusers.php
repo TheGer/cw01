@@ -21,11 +21,11 @@
     </head>
     <body>
         <!-- Included JS Files (Compressed) -->
-         
+
         <script src="javascripts/jquery.js"></script>
-         <script src="javascripts/foundation.min.js"></script>
+        <script src="javascripts/foundation.min.js"></script>
         <script src="javascripts/jquery-ui.js"></script>
-      
+
 
         <!-- Initialize JS Plugins -->
         <script src="javascripts/app.js"></script>
@@ -63,74 +63,74 @@
                 if (isset($data['addform'])) {
                     echo $data['addform'];
                 }
-                
+
                 //display edit user form.
                 if (isset($data['editform'])) {
                     echo $data['editform'];
                 }
-                
-                
-                if (isset($data['profile']))
-                {
+
+
+                if (isset($data['profile'])) {
                     echo $data['profile'];
                 }
-                
-                
-                if (isset($data['viewingslist']))
-                {
-                    
+
+
+                if (isset($data['viewingslist'])) {
+
                     echo $data['viewingslist'];
                 }
-                
+
 
                 //display list of users
                 if (isset($data['users'])) {
                     ?>
+                    <h3>Users List</h3>
                     <div class="two columns">
                         <a href="<?= SITE_ROOT ?>/index.php?page=users&action=showadd">Add new user</a></td>
                     </div>
-                    <table class="ten columns"> 
-                        <tr>
-                            <th>User id</th>
-                            <th>Username</th>
-                            <th>First Name</th>
-                            <th>Second Name</th>
-                            <th>Type</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
-                        </tr>
+                    <div class="ten columns"> 
+                        <table class="ten columns">
+                            <tr>
+                                <th>User id</th>
+                                <th>Username</th>
+                                <th>First Name</th>
+                                <th>Second Name</th>
+                                <th>Type</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
 
-                        <?php
-                        foreach ($data['users'] as $user) {
-                            ?>
-                            <tr> 
-                                <td><?= $user->id ?></td>
-                                <td><?= $user->username ?></td>
-                                <td><?= $user->firstname ?></td>
-                                <td><?= $user->secondname ?></td>
-                                <td><?= $user->type ?></td>
-                                <td><a href="<?= SITE_ROOT ?>/index.php?page=users&action=showedit&id=<?= $user->id ?>">Edit user</a></td>
-                                <td><a href="<?= SITE_ROOT ?>/index.php?page=users&action=delete&id=<?= $user->id ?>" onclick="return confirm('Are you sure?')">Delete user</a></td>
-                            </tr>                               
+    <?php
+    foreach ($data['users'] as $user) {
+        ?>
+                                <tr> 
+                                    <td><?= $user->id ?></td>
+                                    <td><?= $user->username ?></td>
+                                    <td><?= $user->firstname ?></td>
+                                    <td><?= $user->secondname ?></td>
+                                    <td><?= $user->type ?></td>
+                                    <td><a href="<?= SITE_ROOT ?>/index.php?page=users&action=showedit&id=<?= $user->id ?>">Edit user</a></td>
+                                    <td><a href="<?= SITE_ROOT ?>/index.php?page=users&action=delete&id=<?= $user->id ?>" onclick="return confirm('Are you sure?')">Delete user</a></td>
+                                </tr>                               
+        <?php
+    }
+    ?>
+
                             <?php
                         }
                         ?>
 
-                        <?php
-                    }
-                    ?>
-
+                </div>
             </div>
-        </div>
 
 
 
-        <script>
-                            $(window).load(function() {
-                                $("#detailimages").orbit();
-                                $("#featured").orbit();
-                            });
-        </script> 
+            <script>
+                                        $(window).load(function() {
+                                            $("#detailimages").orbit();
+                                            $("#featured").orbit();
+                                        });
+            </script> 
 
     </body>
 </html>

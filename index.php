@@ -7,7 +7,7 @@
 session_start();
 //error_reporting(E_ALL);
 //debug mode off
-error_reporting(E_ALL);
+error_reporting(0);
 define('SERVER_ROOT', 'c:\xampp\htdocs\cw01');
 
 //yoursite.com is your webserver

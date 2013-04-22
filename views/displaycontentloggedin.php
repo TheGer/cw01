@@ -75,6 +75,7 @@
                   
             </div>
             <div class="nine columns">
+                <h3>Content List</h3>
                 <table class="nine">
                     <thead>
                         <tr>

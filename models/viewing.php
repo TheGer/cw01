@@ -27,7 +27,7 @@ class Viewing_Model extends MyActiveRecord {
     
     
      public function get_viewings_by_user($userid) {
-        $sql = $this->Prepare("select * from viewing_model where userid = $userid");
+        $sql = $this->Prepare("select * from viewing_model where userid = $userid order by dateofviewing desc");
         return $this->FindBySql($this, $sql);
     }
 

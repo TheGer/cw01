@@ -77,6 +77,7 @@
                     <p><a href="<?= SITE_ROOT ?>/index.php?page=car&action=showsearch">search</a></p>
                 </div>
                 <div class="nine columns">
+                    <h3>Cars list </h3>
                     <table class="nine">
                         <thead>
                             <tr>

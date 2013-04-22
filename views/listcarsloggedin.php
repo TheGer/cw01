@@ -79,6 +79,7 @@ if (isset($data['listviewings'])){
                     <a href="<?= SITE_ROOT ?>/index.php?page=car&action=showadd">Add new car</a></td>
                 </div>  
             <div class="ten columns">
+                <h3>Cars list </h3>
                 <table class="nine">
                     <thead>
                         <tr>
