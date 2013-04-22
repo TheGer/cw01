@@ -12,6 +12,7 @@
         Name: <input type="text" name="name" />
         Title: <input type="text" name="title" />
         Text:
+        
         <textarea name="content"></textarea>
         <input type="submit" value="add new content"/>
     </form>
