@@ -146,8 +146,9 @@ class Users_Controller {
             $master->assign('addform', $registerform->render(FALSE));
         }
         
-        if (($getVars['action']=='profile') && ($loggedin) && (!$admin))
+        if (($getVars['action']=='profile') && ($loggedin))
         {
+            echo "test";
             $id = $getVars['id'];
              $loggedinnav = new View_Model('loggedinnavigation');
             $loggedinnav->assign('articleslist', $contentModel->get_articles());
@@ -162,7 +163,7 @@ class Users_Controller {
             $profile->assign('firstname',$currentUser->firstname);
             $profile->assign('secondname',$currentUser->secondname);
             $profile->assign('address',$currentUser->address);
-            $profile->assign('id',$currentUser->id);
+            $profile->assign('id',$id);
             
             $master->assign('profile',$profile->render(FALSE));
         }
