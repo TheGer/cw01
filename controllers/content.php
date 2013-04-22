@@ -68,15 +68,15 @@ class Content_Controller {
 
         $contentModel = new Content_Model;
 
-        if (($getVars['action'] == 'add') && ($loggedin)) {
+        if (($getVars['action'] == 'add') && ($loggedin) && ($admin)) {
             $this->add($getVars);
         }
 
-        if (($getVars['action'] == 'edit') && ($loggedin)) {
+        if (($getVars['action'] == 'edit') && ($loggedin) && ($admin)) {
             $this->edit($getVars);
         }
         
-        if (($getVars['action'] == 'delete') && ($loggedin)) {
+        if (($getVars['action'] == 'delete') && ($loggedin) && ($admin)) {
             $this->delete($getVars);
         }
 
@@ -101,7 +101,15 @@ class Content_Controller {
                 $master = new View_Model('displaycontentloggedin');
                 $master->assign('articleslist', $contentModel->get_articles());
             }
+            if (!$admin)
+            {
             $loggedinnav = new View_Model('loggedinnavigation');
+            }
+            
+            if ($admin)
+            {
+              $loggedinnav = new View_Model('adminnavigation');   
+            }
             $loggedinnav->assign('articleslist', $contentModel->get_articles());
 
             $master->assign('navigation', $loggedinnav->render(FALSE));
@@ -113,7 +121,7 @@ class Content_Controller {
 
         //assign article data to view
 
-        if (($getVars['action'] == 'showedit') && ($loggedin)) {
+        if (($getVars['action'] == 'showedit') && ($loggedin) && ($admin)) {
             $id = $getVars['id'];
             //     echo $id;
             $contentModel = array_shift($contentModel->get_article($id));
@@ -123,7 +131,7 @@ class Content_Controller {
             $master->assign('editform', $editform->render(FALSE));
         }
 
-        if (($getVars['action'] == 'showadd') && ($loggedin)) {
+        if (($getVars['action'] == 'showadd') && ($loggedin) && ($admin)) {
             
             $addform = new View_Model('addforms/addcontent');
             $master->assign('addform', $addform->render(FALSE));
