@@ -127,6 +127,8 @@ class Content_Controller {
             $contentModel = array_shift($contentModel->get_article($id));
             $editform = new View_Model('editforms/editcontent');
             $editform->assign('idtoedit', $contentModel->id);
+              $editform->assign('nametoedit', $contentModel->name);
+                $editform->assign('titletoedit', $contentModel->title);
             $editform->assign('texttoedit', $contentModel->content);
             $master->assign('editform', $editform->render(FALSE));
         }
