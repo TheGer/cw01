@@ -26,11 +26,11 @@ class Car_Controller {
         return $carModel->id;
     }
 
-    public function uploadimage(int $id) {       //to do implement upload image
-        if (file_exists(SERVER_ROOT . '/uploads/' . $id . '/')) {
-            echo $_FILES["file"] . ["name"] . " already exists";
+    public function uploadimage(int $id) {       
+        if (file_exists(SERVER_ROOT . '/uploads/' . $id . '/'.$_FILES["file"]["name"])) {
+            echo $_FILES["file"]["name"] . " already exists";
         } else {
-            move_uploaded_file($FILES["file"]["tmp_name"], SERVER_ROOT . '/uploads/' . $id . '/' . $FILES["file"]["name"]);
+            move_uploaded_file($_FILES["file"]["tmp_name"], SERVER_ROOT . '/uploads/' . $id . '/' . $_FILES["file"]["name"]);
         }
     }
 
