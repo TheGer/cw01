@@ -83,9 +83,21 @@ $request = $_SERVER['QUERY_STRING'];
 }
 
 
-if ($request=="")
+if (($request=="") && (!isset($_POST)))
 {
 $request = "page=content&article=home";
+}
+
+
+$getVars = array();
+//add support for POST image upload
+if (isset($_POST['page']))
+{
+$getVars['page'] = $_POST['page'];
+$getVars['action'] = $_POST['action'];
+$getVars['id'] = $_POST['carid'];
+$getVars['file'] = $_FILES['file'];
+
 }
 
 //parse the page request and other GET variables
@@ -93,7 +105,7 @@ $parsed = explode('&' , $request);
 
 //the page is the first element
 //the rest of the array are get statements, parse them out.
-$getVars = array();
+
 foreach ($parsed as $argument)
 {
     //split GET vars along '=' symbol to separate variable, values

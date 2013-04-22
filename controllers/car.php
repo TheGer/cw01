@@ -81,12 +81,12 @@ class Car_Controller {
         if (isset($_SESSION['username'])) {
             $loggedin = true;
         }
-        
-        
-        if ($_SESSION['usertype']<4) {
+
+
+        if ($_SESSION['usertype'] < 4) {
             $admin = true;
         }
-        
+
         $carModel = new Car_Model;
         $contentModel = new Content_Model;
 
@@ -117,23 +117,23 @@ class Car_Controller {
             $navigation = new View_Model('navigation');
             $navigation->assign('articleslist', $contentModel->get_articles());
             $master->assign('navigation', $navigation->render(FALSE));
-        } 
-        
+        }
+
         if ($loggedin) {
             $master = new View_Model('listcars');
             $master->assign('carslist', $carModel->get_cars_default());
-            
-           // $master->assign('numberofviews',get_viewing_count_by_car($carid));
+
+            // $master->assign('numberofviews',get_viewing_count_by_car($carid));
             $loggedinnav = new View_Model('loggedinnavigation');
             $loggedinnav->assign('articleslist', $contentModel->get_articles());
             $master->assign('navigation', $loggedinnav->render(FALSE));
         }
-        
+
         if (($loggedin) && ($admin)) {
             $master = new View_Model('listcarsloggedin');
             $master->assign('carslist', $carModel->get_cars_default());
-            
-           // $master->assign('numberofviews',get_viewing_count_by_car($carid));
+
+            // $master->assign('numberofviews',get_viewing_count_by_car($carid));
             $loggedinnav = new View_Model('adminnavigation');
             $loggedinnav->assign('articleslist', $contentModel->get_articles());
             $master->assign('navigation', $loggedinnav->render(FALSE));
@@ -154,16 +154,15 @@ class Car_Controller {
 
             $id = $getVars['id'];
             $bookviewingview = new View_Model('/addforms/addviewing');
-            $bookviewingview->assign('id',$id);
+            $bookviewingview->assign('id', $id);
             $carmodel = array_shift($carModel->get_car($id));
-            $bookviewingview->assign('name',$carmodel->name);
-               $bookviewingview->assign('model',$carmodel->model);
-            $master->assign('bookingform',$bookviewingview->render(FALSE));
-            
+            $bookviewingview->assign('name', $carmodel->name);
+            $bookviewingview->assign('model', $carmodel->model);
+            $master->assign('bookingform', $bookviewingview->render(FALSE));
         }
 
         if ($getVars['action'] == 'search') {
-            
+
             //display search results
             $carModel->name = $getVars['searchname'];
             $carModel->model = $getVars['searchmodel'];
@@ -176,27 +175,22 @@ class Car_Controller {
             $carModel->cartype = $getVars['searchcartype'];
 
             //$master = new View_Model($this->template);
-            
-            
-            $searchstring ="";
-            foreach ($carModel as $key=>$value)
-            {
-                if ($value != "")
-                {
-                    if ($searchstring=="")
-                    {
-                    $searchstring = $searchstring."$key='$value'";
-                    }
-                    else
-                    {
-                     $searchstring = $searchstring." AND $key='$value'";    
+
+
+            $searchstring = "";
+            foreach ($carModel as $key => $value) {
+                if ($value != "") {
+                    if ($searchstring == "") {
+                        $searchstring = $searchstring . "$key='$value'";
+                    } else {
+                        $searchstring = $searchstring . " AND $key='$value'";
                     }
                 }
             }
-            
-        //    echo $searchstring;
-            
-            $master->assign('carslist', $carModel->FindAll("car_model",$searchstring));
+
+            //    echo $searchstring;
+
+            $master->assign('carslist', $carModel->FindAll("car_model", $searchstring));
         }
 
 
@@ -230,9 +224,9 @@ class Car_Controller {
             $searchform = new View_Model('searchform');
             $master->assign('searchform', $searchform->render(FALSE));
         }
-        
-        
-         if (($getVars['action'] == 'showdetails') && ($loggedin)) {
+
+
+        if (($getVars['action'] == 'showdetails') && ($loggedin)) {
             $id = $getVars['id'];
 
             $detailsview = new View_Model('cardetailsloggedin');
@@ -255,20 +249,20 @@ class Car_Controller {
 
             $master->assign('detailsview', $detailsview->render(FALSE));
         }
-        
-        
-        
-        if (($getVars['action'] == 'listviewings') && ($loggedin)  && ($admin)){
+
+
+
+        if (($getVars['action'] == 'listviewings') && ($loggedin) && ($admin)) {
             //list viewings page
-          //  echo "test";
+            //  echo "test";
             $id = $getVars['id'];
-            
+
             $listviewingform = new View_Model('listviewings');
             $viewingmodel = new Viewing_Model();
-            $listviewingform->assign('viewinglist',$viewingmodel->get_viewings_by_car($id));
-            $master->assign('listviewings',$listviewingform->render(FALSE));
+            $listviewingform->assign('viewinglist', $viewingmodel->get_viewings_by_car($id));
+            $master->assign('listviewings', $listviewingform->render(FALSE));
             // echo $id;
-           // $carModel = array_shift($carModel->get_article($id));
+            // $carModel = array_shift($carModel->get_article($id));
         }
 
         if (($getVars['action'] == 'showedit') && ($loggedin) && ($admin)) {
@@ -285,12 +279,12 @@ class Car_Controller {
             $editform->assign('notestoedit', $carModel->notes);
             $editform->assign('dateaddedtoedit', $carModel->dateadded);
             $editform->assign('featuredtoedit', $carModel->featured);
-            $editform->assign('colortoedit', $carmodel->color);
-            $editform->assign('featuredtoedit', $carmodel->featured);
-            $editform->assign('cartypetoedit', $carmodel->cartype);
+            $editform->assign('colortoedit', $carModel->color);
+            $editform->assign('featuredtoedit', $carModel->featured);
+            $editform->assign('cartypetoedit', $carModel->cartype);
 
             $editimagesform = new View_Model('/editforms/editcarimages');
-            $editimagesform->assign('idtoedit', $carmodel->id);
+            $editimagesform->assign('idtoedit', $carModel->id);
 
             $master->assign('editform', $editform->render(FALSE));
             $master->assign('editimagesform', $editimagesform->render(FALSE));
@@ -301,6 +295,23 @@ class Car_Controller {
             $master->assign('addform', $addform->render(FALSE));
         }
 
+        if (($getVars['action'] == 'deleteimage') && ($loggedin) && ($admin)) {
+            $path = $getVars['path'];
+            unlink($path);
+        }
+
+        if (($getVars['action'] == 'addimage') && ($loggedin) && ($admin)) {
+            if($getVars['file']['error'] >0)
+            {
+                echo $getVars['file']['error'];
+            }
+            else
+            {
+                echo "Uploaded ".$getVars['file']['name'];
+                move_uploaded_file($getVars['file']['tmp_name'],SERVER_ROOT . "/uploads/" . $getVars['carid'] . "/".$getVars['file']['name']);
+            }
+        }
+        
 
 
         $master->render();

@@ -64,7 +64,8 @@
                  echo $data['bookingform'];
             }
             else if(isset($data['editview'])){
-                echo $data['detailsview'];
+                echo $data['editview'];
+                echo $data['editimagesform'];
             }
             else if (isset($data['addview'])){
                 echo $data['addview'];

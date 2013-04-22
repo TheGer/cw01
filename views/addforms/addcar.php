@@ -19,6 +19,8 @@ $("#addcar").submit(function(){
         
 </script>
 <div class="twelve columns">
+    <h3>Add car</h3>
+    <p>Edit the car to add images after it has been added</p>
     <form method="get" id="addcar" action="<?= SITE_ROOT ?>">
         <input type="hidden" name="page" value="car"/>
         <input type="hidden" name="action" value="add"/>
