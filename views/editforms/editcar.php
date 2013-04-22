@@ -34,11 +34,11 @@
         <label class="left inline">Date added:</label> 
         <input type="text" name="dateadded" id="datepicker" value="<?= $data['dateaddedtoedit'] ?>" />
         <label class="left inline">Color:</label>
-        <input type="text" name="color" value="<?= $data['color'] ?>"/>
+        <input type="text" name="color" value="<?= $data['colortoedit'] ?>"/>
         <label class="left inline">Notes:</label> 
-        <textarea name="notes"><?= $data['notestoedit'] ?>"</textarea>
+        <textarea name="notes"><?= $data['notestoedit'] ?></textarea>
         <label for="checkbox1">  
-            <?php if ($data['featurestoedit'] == 0) { ?>
+            <?php if ($data['featuredtoedit'] == 0) { ?>
                 <input type="checkbox" id="checkbox1" style="display: none;">  
                 <span class="custom checkbox"></span> Featured car?
             <?php } else { ?>

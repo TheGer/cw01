@@ -8,7 +8,7 @@ if ($handle = opendir(SERVER_ROOT . '/uploads/' . $data['idtoedit'] . '/')) {
         if ($entry != "." && $entry != "..") {
             echo "$entry\n";
             ?>
-            <a href="<?= SITE_ROOT ?>?page=car&action=deleteimage&path='<?= $entry ?>'">Delete</a>
+            <a href="<?= SITE_ROOT ?>?page=car&action=deleteimage&path='<?= $entry ?>'">Delete</a><br/>
             <?php
         }
     }
