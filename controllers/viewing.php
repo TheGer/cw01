@@ -69,10 +69,18 @@ class Viewing_Controller
         }
         
         
-        if (($getVars['action'] == 'delete') && ($loggedin)){
+        if (($getVars['action'] == 'delete') && ($loggedin) && ($admin)){
             $this->delete($getVars);
-            
+            header("Location:".SITE_ROOT."?page=car&action=listviewings");
         }
+        
+         if (($getVars['action'] == 'delete') && ($loggedin) && (!$admin)){
+            $this->delete($getVars);
+            header("Location:".SITE_ROOT."?page=users&action=profile");
+        }
+       
+        
+        
         
     }
     

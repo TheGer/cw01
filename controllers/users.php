@@ -148,8 +148,8 @@ class Users_Controller {
         
         if (($getVars['action']=='profile') && ($loggedin))
         {
-            echo "test";
-            $id = $getVars['id'];
+            //echo "test";
+            $id = $_SESSION['userid'];
              $loggedinnav = new View_Model('loggedinnavigation');
             $loggedinnav->assign('articleslist', $contentModel->get_articles());
             $master->assign('navigation', $loggedinnav->render(FALSE));

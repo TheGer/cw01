@@ -94,7 +94,7 @@
                             <tr>     
                                 <td><?= $content->id ?></td>
                                 <td><?= $content->name ?></td>
-                                <td><?= $content->date ?></td>
+                                <td><?= date('Y-m-d',$content->date) ?></td>
                                 <td><a href="<?= SITE_ROOT ?>/index.php?page=content&action=delete&id=<?= $content->id ?>">Delete</a></td>
                                 <td><a href="<?= SITE_ROOT ?>/index.php?page=content&action=showedit&id=<?= $content->id ?>">Edit</a></td>
                             </tr>
