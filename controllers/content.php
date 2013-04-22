@@ -12,45 +12,41 @@ class Content_Controller {
 
     //function to add content
     public function add(array $getVars) {
-    //echo "test".$getVars['title'];
+        //echo "test".$getVars['title'];
         $contentModel = new Content_Model();
         $contentModel->authorid = $getVars['authorid'];
-        $contentModel->title = $getVars['title'];  
-        $contentModel->name = $getVars['name'];  
+        $contentModel->title = $getVars['title'];
+        $contentModel->name = $getVars['name'];
         $contentModel->content = $getVars['content'];
-      
-        
+
+
 //added this comment to the application to show a commit
 
- 
+
 
 
         return $contentModel->save();
     }
-    
-    
-     public function delete(array $getVars){
+
+    public function delete(array $getVars) {
         $contentModel = new Content_Model();
         $contentModel->id = $getVars['id'];
         return $contentModel->delete();
-        
     }
-    
 
     public function edit(array $getVars) {
         $contentModel = new Content_Model();
-
+        $contentModel->title = $getVars['title'];
+        $contentModel->name = $getVars['name'];
         $contentModel->content = $getVars['content'];
 
         $contentModel->id = $getVars['id'];
         return $contentModel->save();
     }
-    
-    
-    public function articlecount(){
+
+    public function articlecount() {
         $contentModel = new Content_Model();
         return $contentModel->get_article_count();
-        
     }
 
     public function main(array $getVars) {
@@ -60,9 +56,9 @@ class Content_Controller {
         if (isset($_SESSION['username'])) {
             $loggedin = true;
         }
-        
-        
-        if ($_SESSION['usertype']<4) {
+
+
+        if ($_SESSION['usertype'] < 4) {
             $admin = true;
         }
 
@@ -75,7 +71,7 @@ class Content_Controller {
         if (($getVars['action'] == 'edit') && ($loggedin) && ($admin)) {
             $this->edit($getVars);
         }
-        
+
         if (($getVars['action'] == 'delete') && ($loggedin) && ($admin)) {
             $this->delete($getVars);
         }
@@ -101,14 +97,12 @@ class Content_Controller {
                 $master = new View_Model('displaycontentloggedin');
                 $master->assign('articleslist', $contentModel->get_articles());
             }
-            if (!$admin)
-            {
-            $loggedinnav = new View_Model('loggedinnavigation');
+            if (!$admin) {
+                $loggedinnav = new View_Model('loggedinnavigation');
             }
-            
-            if ($admin)
-            {
-              $loggedinnav = new View_Model('adminnavigation');   
+
+            if ($admin) {
+                $loggedinnav = new View_Model('adminnavigation');
             }
             $loggedinnav->assign('articleslist', $contentModel->get_articles());
 
@@ -116,7 +110,7 @@ class Content_Controller {
         }
 
 
-       
+
 
 
         //assign article data to view
@@ -127,14 +121,14 @@ class Content_Controller {
             $contentModel = array_shift($contentModel->get_article($id));
             $editform = new View_Model('editforms/editcontent');
             $editform->assign('idtoedit', $contentModel->id);
-              $editform->assign('nametoedit', $contentModel->name);
-                $editform->assign('titletoedit', $contentModel->title);
+            $editform->assign('nametoedit', $contentModel->name);
+            $editform->assign('titletoedit', $contentModel->title);
             $editform->assign('texttoedit', $contentModel->content);
             $master->assign('editform', $editform->render(FALSE));
         }
 
         if (($getVars['action'] == 'showadd') && ($loggedin) && ($admin)) {
-            
+
             $addform = new View_Model('addforms/addcontent');
             $master->assign('addform', $addform->render(FALSE));
         }
