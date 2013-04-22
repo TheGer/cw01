@@ -3,6 +3,7 @@
 //error_reporting(0);
 include_once('libraries/MyActiveRecord.php');
 
+print_r($_REQUEST);
 function __autoload($className) {
     //parse out filename where class should be located
     list($suffix, $filename) = preg_split('/_/', strrev($className), 2);
@@ -71,16 +72,13 @@ if (isset($_GET["loginusername"])) {
 
 $getVars = array();
 //add support for POST image upload
-if (isset($_POST['page'])) {
-    $getVars['page'] = $_POST['page'];
-    $getVars['action'] = $_POST['action'];
-    $getVars['id'] = $_POST['carid'];
-    $getVars['file'] = $_FILES['file'];
-} else {
-    if ($request == "") {
-        $request = "page=content&article=home";
-    }
+
+
+if ($request == "") {
+    $request = "page=content&article=home";
 }
+
+
 
 //parse the page request and other GET variables
 $parsed = explode('&', $request);

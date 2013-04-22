@@ -238,7 +238,7 @@ class Car_Controller {
             $detailsview->assign('carenginesize', $carmodel->enginesize);
             $detailsview->assign('carmileage', $carmodel->mileage);
             $detailsview->assign('carnotes', $carmodel->notes);
-            $detailsview->assign('cardateadded', strtotime($carmodel->dateadded));
+            $detailsview->assign('cardateadded', $carmodel->dateadded);
             $detailsview->assign('color', $carmodel->color);
             $detailsview->assign('featured', $carmodel->featured);
             $detailsview->assign('cartype', $carmodel->cartype);
@@ -294,21 +294,25 @@ class Car_Controller {
             $addform = new View_Model('/addforms/addcar');
             $master->assign('addform', $addform->render(FALSE));
         }
-
+        
+      
         if (($getVars['action'] == 'deleteimage') && ($loggedin) && ($admin)) {
-            $path = $getVars['path'];
+            $path = SERVER_ROOT . '/uploads/' . $getVars['id'] . '/'.$getVars['path'];
             unlink($path);
         }
 
         if (($getVars['action'] == 'addimage') && ($loggedin) && ($admin)) {
-            if($getVars['file']['error'] >0)
+          //  print_r($_POST);
+            
+            
+            if($_FILES['file']['error'] >0)
             {
-                echo $getVars['file']['error'];
+                echo $_FILES['file']['error'];
             }
             else
             {
-                echo "Uploaded ".$getVars['file']['name'];
-                move_uploaded_file($getVars['file']['tmp_name'],SERVER_ROOT . "/uploads/" . $getVars['carid'] . "/".$getVars['file']['name']);
+                echo "Uploaded ".$_FILES['file']['name'];
+                move_uploaded_file($_FILES['file']['tmp_name'],SERVER_ROOT . "/uploads/" . $getVars['id'] . "/".$_FILES['file']['name']);
             }
         }
         
