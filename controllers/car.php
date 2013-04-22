@@ -169,7 +169,7 @@ class Car_Controller {
             $carModel->enginesize = $getVars['searchenginesize'];
             $carModel->mileage = $getVars['searchmileage'];
             $carModel->notes = $getVars['searchnotes'];
-            $carModel->dateadded = $getVars['searchdateadded'];
+            $carModel->dateadded = strtotime($getVars['searchdateadded']);
             $carModel->featured = $getVars['searchfeatured'];
             $carModel->color = $getVars['searchcolor'];
             $carModel->cartype = $getVars['searchcartype'];
@@ -238,7 +238,7 @@ class Car_Controller {
             $detailsview->assign('carenginesize', $carmodel->enginesize);
             $detailsview->assign('carmileage', $carmodel->mileage);
             $detailsview->assign('carnotes', $carmodel->notes);
-            $detailsview->assign('cardateadded', $carmodel->dateadded);
+            $detailsview->assign('cardateadded', strtotime($carmodel->dateadded));
             $detailsview->assign('color', $carmodel->color);
             $detailsview->assign('featured', $carmodel->featured);
             $detailsview->assign('cartype', $carmodel->cartype);

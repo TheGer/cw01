@@ -32,7 +32,7 @@
         <label class="left inline">Mileage:</label> 
         <input type="text" name="mileage" value="<?= $data['mileagetoedit'] ?>" />
         <label class="left inline">Date added:</label> 
-        <input type="text" name="dateadded" id="datepicker" value="<?= $data['dateaddedtoedit'] ?>" />
+        <input type="text" name="dateadded" id="dpicker" value="<?= date('Y-m-d',$data['dateaddedtoedit']) ?>" />
         <label class="left inline">Color:</label>
         <input type="text" name="color" value="<?= $data['colortoedit'] ?>"/>
         <label class="left inline">Notes:</label> 
