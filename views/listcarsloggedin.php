@@ -123,7 +123,8 @@ if (isset($data['listviewings'])){
             }
             ?>
         </div>
-
+<hr/>
+            
     </div>
 
 
