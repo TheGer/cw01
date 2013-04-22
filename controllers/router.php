@@ -2,7 +2,7 @@
 
 //error_reporting(0);
 include_once('libraries/MyActiveRecord.php');
-
+print_r($_POST);
 function __autoload($className) {
     //parse out filename where class should be located
     list($suffix, $filename) = preg_split('/_/', strrev($className), 2);
