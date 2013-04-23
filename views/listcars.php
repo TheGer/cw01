@@ -20,13 +20,13 @@
 
     </head>
     <body>
-          
 
-              <!-- Included JS Files (Compressed) -->
+
+        <!-- Included JS Files (Compressed) -->
         <script src="javascripts/jquery.js"></script>
-         <script src="javascripts/foundation.min.js"></script>
+        <script src="javascripts/foundation.min.js"></script>
         <script src="javascripts/jquery-ui.js"></script>
-    
+
         <!-- Initialize JS Plugins -->
         <script src="javascripts/app.js"></script>
 
@@ -45,9 +45,11 @@
         <div class="row">
             <div class="twelve columns">
                 <div id="featured">
-                    <img src="code_images/slide1.jpg" alt="slide image">
-                    <img src="code_images/slide2.jpg" alt="slide image">
-                    <img src="code_images/slide3.jpg" alt="slide image">
+                    <?php if (!isset($data['bookingform'])) { ?>
+                        <img src="code_images/slide1.jpg" alt="slide image">
+                        <img src="code_images/slide2.jpg" alt="slide image">
+                        <img src="code_images/slide3.jpg" alt="slide image">
+                    <?php } ?>
                 </div>
             </div>
         </div>
@@ -56,22 +58,16 @@
             <?php
             if (isset($data['detailsview'])) {
                 echo $data['detailsview'];
-            }
-            else if(isset($data['searchform'])){
-                 echo $data['searchform'];
-            } 
-            else if(isset($data['bookingform'])){
-                 echo $data['bookingform'];
-            }
-            else if(isset($data['editview'])){
+            } else if (isset($data['searchform'])) {
+                echo $data['searchform'];
+            } else if (isset($data['bookingform'])) {
+                echo $data['bookingform'];
+            } else if (isset($data['editview'])) {
                 echo $data['editview'];
                 echo $data['editimagesform'];
-            }
-            else if (isset($data['addview'])){
+            } else if (isset($data['addview'])) {
                 echo $data['addview'];
-            }
-            
-            else {
+            } else {
                 ?>
                 <!-- table with all the cars as well as a link to the details page --> 
                 <div class="two columns">
@@ -102,7 +98,7 @@
                                     <td><?= $car->model ?></td>
                                     <td><?= $car->mileage ?></td>
                                     <td><?= $car->enginesize ?></td>
-                                    <td><?= date('Y-m-d',$car->dateadded) ?></td>
+                                    <td><?= date('Y-m-d', $car->dateadded) ?></td>
                                     <td><a href="<?= SITE_ROOT ?>/index.php?page=car&action=showdetails&id=<?= $car->id ?>">View details</a></td>
                                 </tr>
         <?php
@@ -114,11 +110,11 @@
                         }
                         ?>
             </div>
-<hr/>
-            
+            <hr/>
+
         </div>
 
-  
+
 
 
         <script>

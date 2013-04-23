@@ -21,12 +21,12 @@
     </head>
     <body>
         <!-- Included JS Files (Compressed) -->
-          
+
 
         <script src="javascripts/jquery.js"></script>
         <script src="javascripts/foundation.min.js"></script>
         <script src="javascripts/jquery-ui.js"></script>
-     
+
         <!-- Initialize JS Plugins -->
         <script src="javascripts/app.js"></script>
 
@@ -66,7 +66,7 @@
                 echo $data['editimagesform'];
             }
 
-if (isset($data['listviewings'])){
+            if (isset($data['listviewings'])) {
                 echo $data['listviewings'];
             }
             if (isset($data['detailsview'])) {
@@ -78,63 +78,63 @@ if (isset($data['listviewings'])){
 
                     <a href="<?= SITE_ROOT ?>/index.php?page=car&action=showadd">Add new car</a></td>
                 </div>  
-            <div class="ten columns">
-                <h3>Cars list </h3>
-                <table class="nine">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Model</th>
-                            <th>Mileage</th>
-                            <th>Engine Size</th>
-                            <th>Date Added</th>
-                            <th>Number of Viewings</th>
-                            <th>List viewings</th>
-                            <th>View Details</th>  
-                            <th>Edit</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        <?php
-                        foreach ($data['carslist'] as $car) {
-                            ?>
-                            <tr>     
-                                <td><?= $car->id ?></td>
-                                <td><?= $car->name ?></td>
-                                <td><?= $car->model ?></td>
-                                <td><?= $car->mileage ?></td>
-                                <td><?= $car->enginesize ?></td>
-                                <td><?= date('Y-m-d',$car->dateadded) ?></td>
-                                <td><?= $car->get_viewing_count()?></td>
-                                <td><a href="<?= SITE_ROOT ?>/index.php?page=car&action=listviewings&id=<?= $car->id ?>">List viewings</a></td>
-                                <td><a href="<?= SITE_ROOT ?>/index.php?page=car&action=showdetails&id=<?= $car->id ?>">View details</a></td>
-                                <td><a href="<?= SITE_ROOT ?>/index.php?page=car&action=showedit&id=<?= $car->id ?>">Edit</a></td>
-                                <td><a href="<?= SITE_ROOT ?>/index.php?page=car&action=delete&id=<?= $car->id ?>" onClick="return confirm('Are you sure?');">Delete</a></td>
+                <div class="ten columns">
+                    <h3>Cars list </h3>
+                    <table class="nine">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Model</th>
+                                <th>Mileage</th>
+                                <th>Engine Size</th>
+                                <th>Date Added</th>
+                                <th>Number of Viewings</th>
+                                <th>List viewings</th>
+                                <th>View Details</th>  
+                                <th>Edit</th>
+                                <th>Delete</th>
                             </tr>
+                        </thead>
+                        <tbody>
+
                             <?php
-                        }
-                        ?>
-                    </tbody>
-                </table>
-                <?php
-            }
-            ?>
+                            foreach ($data['carslist'] as $car) {
+                                ?>
+                                <tr>     
+                                    <td><?= $car->id ?></td>
+                                    <td><?= $car->name ?></td>
+                                    <td><?= $car->model ?></td>
+                                    <td><?= $car->mileage ?></td>
+                                    <td><?= $car->enginesize ?></td>
+                                    <td><?= date('Y-m-d', $car->dateadded) ?></td>
+                                    <td><?= $car->get_viewing_count() ?></td>
+                                    <td><a href="<?= SITE_ROOT ?>/index.php?page=car&action=listviewings&id=<?= $car->id ?>">List viewings</a></td>
+                                    <td><a href="<?= SITE_ROOT ?>/index.php?page=car&action=showdetails&id=<?= $car->id ?>">View details</a></td>
+                                    <td><a href="<?= SITE_ROOT ?>/index.php?page=car&action=showedit&id=<?= $car->id ?>">Edit</a></td>
+                                    <td><a href="<?= SITE_ROOT ?>/index.php?page=car&action=delete&id=<?= $car->id ?>" onClick="return confirm('Are you sure?');">Delete</a></td>
+                                </tr>
+                                <?php
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                    <?php
+                }
+                ?>
+            </div>
+            <hr/>
+
         </div>
-<hr/>
-            
-    </div>
 
 
 
-    <script>
-        $(window).load(function() {
-            $("#detailimages").orbit();
-            $("#featured").orbit();
-        });
-    </script> 
+        <script>
+                                        $(window).load(function() {
+                                            $("#detailimages").orbit();
+                                            $("#featured").orbit();
+                                        });
+        </script> 
 
-</body>
+    </body>
 </html>
