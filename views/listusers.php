@@ -14,7 +14,7 @@
         <!-- Included CSS Files (Compressed) -->
         <link rel="stylesheet" href="stylesheets/foundation.min.css">
         <link rel="stylesheet" href="stylesheets/app.css">
-
+<link rel="stylesheet" href="css/ui-lightness/jquery-ui-1.10.0.custom.min.css" />
         <script src="javascripts/modernizr.foundation.js"></script>
 
 
